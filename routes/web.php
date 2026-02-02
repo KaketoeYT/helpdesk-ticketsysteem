@@ -21,6 +21,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', [Settings\AppearanceController::class, 'edit'])->name('settings.appearance.edit');
 });
 
-Testerinos kablimoes
+I gently open visual studio code
 
 require __DIR__ . '/auth.php';
