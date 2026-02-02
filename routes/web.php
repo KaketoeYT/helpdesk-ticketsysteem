@@ -21,4 +21,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', [Settings\AppearanceController::class, 'edit'])->name('settings.appearance.edit');
 });
 
+TEST
+
 require __DIR__ . '/auth.php';
