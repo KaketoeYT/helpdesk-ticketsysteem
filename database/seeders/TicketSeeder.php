@@ -15,21 +15,21 @@ class TicketSeeder extends Seeder
     {
         $tickets = [
             [
-                'title' => 'Login Issue',
+                'subject' => 'Login Issue',
                 'description' => 'Unable to login with correct credentials.',
                 'status' => 'open',
                 'priority' => 'high',
                 'category_id' => 1,
             ],
             [
-                'title' => 'Page Not Loading',
+                'subject' => 'Page Not Loading',
                 'description' => 'The dashboard page is not loading properly.',
                 'status' => 'in_progress',
                 'priority' => 'medium',
                 'category_id' => 2,
             ],
             [
-                'title' => 'Feature Request',
+                'subject' => 'Feature Request',
                 'description' => 'Requesting a new feature for reporting.',
                 'status' => 'closed',
                 'priority' => 'low',
