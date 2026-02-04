@@ -30,6 +30,6 @@ class ChatSeeder extends Seeder
                 'user' => 3,
             ]
         ];
-        DB::table('chat')->insert($chats);
+        DB::table('chats')->insert($chats);
     }
 }
