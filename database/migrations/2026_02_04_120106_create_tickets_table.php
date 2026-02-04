@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('subject');
             $table->text('description');
             $table->string('status')->default('open');
-            $table->string('priority')->default('normal');
+            $table->integer('priority')->default(5);
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
