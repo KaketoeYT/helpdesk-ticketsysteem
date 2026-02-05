@@ -27,6 +27,12 @@
                         <td>{{ $ticket->created_at }}</td>
                         <td>
                             <!-- Actions buttons -->
+                            <!-- Edit -->
+                            <a href="{{ route('tickets.edit', $ticket->id)}}">
+                                <button type="button">Edit</button>
+                            </a>
+
+                            <!-- Destroy -->
                             <form action="{{ route('tickets.destroy', $ticket->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
