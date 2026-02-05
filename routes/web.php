@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Settings;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,6 +22,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', [Settings\AppearanceController::class, 'edit'])->name('settings.appearance.edit');
 });
 
+Route::get('/ticket/create', [TicketController::class, 'create'])->name('ticket.create');
+Route::post('/ticket', [TicketController::class, 'store'])->name('ticket.store');
 
 
 require __DIR__ . '/auth.php';

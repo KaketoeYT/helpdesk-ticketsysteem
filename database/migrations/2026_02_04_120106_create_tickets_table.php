@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
+
             $table->string('subject');
             $table->text('description');
             $table->string('status')->default('open');
-            $table->integer('priority')->default(5);
+
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('priority_id');
+            $table->foreignId('location_id');
+
             $table->timestamps();
         });
     }

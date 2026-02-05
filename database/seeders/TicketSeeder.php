@@ -18,22 +18,25 @@ class TicketSeeder extends Seeder
                 'subject' => 'Login Issue',
                 'description' => 'Unable to login with correct credentials.',
                 'status' => 'open',
-                'priority' => 1,
+                'priority_id' => 1,
                 'category_id' => 1,
+                'location_id' => 2,
             ],
             [
                 'subject' => 'Page Not Loading',
                 'description' => 'The dashboard page is not loading properly.',
                 'status' => 'in_progress',
-                'priority' => 3,
+                'priority_id' => 3,
                 'category_id' => 2,
+                'location_id' => 2,
             ],
             [
                 'subject' => 'Feature Request',
                 'description' => 'Requesting a new feature for reporting.',
                 'status' => 'closed',
-                'priority' => 4,
+                'priority_id' => 4,
                 'category_id' => 3,
+                'location_id' => 1,
             ],
         ];
         DB::table('tickets')->insert($tickets);
