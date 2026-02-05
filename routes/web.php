@@ -23,16 +23,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', [Settings\AppearanceController::class, 'edit'])->name('settings.appearance.edit');
 });
 
-
+// Routes voor Tickets
 Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
-
 Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create');
-Route::post('/tickets', [TicketController::class, 'store'])->name('ticket.store');
+Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store');
+
+Route::get('/tickets/{id}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
+Route::put('/tickets/{id}', [TicketController::class, 'update'])->name('tickets.update');
 
 Route::delete('/tickets/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');
 
-//Routes voor categories
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');  
+// Routes voor categories
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
