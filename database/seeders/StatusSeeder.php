@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class StatusSeeder extends Seeder
 {
@@ -12,6 +13,17 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $statuses = [
+            [
+                'name' => 'Open'
+            ],
+            [
+                'name' => 'In behandeling'
+            ],
+            [
+                'name' => 'Afgehandeld'
+            ]
+        ];
+        DB::table('statuses')->insert($statuses);
     }
 }

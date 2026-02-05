@@ -12,7 +12,8 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        $statuses = Status::all();
+        return view('statuses.index', compact('statuses'));
     }
 
     /**
@@ -20,7 +21,7 @@ class StatusController extends Controller
      */
     public function create()
     {
-        //
+        return view('statuses.create');
     }
 
     /**
@@ -28,7 +29,15 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name',
+        ]);
+
+        Status::create([
+            'name' => $validated['name'],
+        ]);
+
+        return redirect()->route('statuses.index');
     }
 
     /**
@@ -44,7 +53,7 @@ class StatusController extends Controller
      */
     public function edit(Status $status)
     {
-        //
+        return view('statuses.edit', compact('status'));
     }
 
     /**
@@ -52,7 +61,15 @@ class StatusController extends Controller
      */
     public function update(Request $request, Status $status)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name,' . $status->id,
+        ]);
+
+        $status->update([
+            'name' => $validated['name'],
+        ]);
+
+        return redirect()->route('statuses.index');
     }
 
     /**
@@ -60,6 +77,7 @@ class StatusController extends Controller
      */
     public function destroy(Status $status)
     {
-        //
+        $status->delete();
+        return redirect()->route('statuses.index');
     }
 }
