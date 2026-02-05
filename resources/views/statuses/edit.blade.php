@@ -1,5 +1,7 @@
 <div>
     <h1>Status Bewerken</h1>
+    <button><a href="{{ route('statuses.index') }}">Terug</a></button>
+
     <form action="{{ route('statuses.update', $status->id) }}" method="POST">
         @csrf
         @method('PUT')

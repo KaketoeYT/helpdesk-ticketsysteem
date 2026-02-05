@@ -1,5 +1,6 @@
 <div class="container">
     <h1>Status Overzicht</h1>
+    <button><a href="{{ route('statuses.create') }}">Maak een nieuwe status</a></button>
     
     @if($statuses->isEmpty())
         <p>Er zijn geen statussen.</p>
@@ -22,7 +23,7 @@
                         <td>
                             <!-- Actions buttons -->
                             <!-- Edit -->
-                            <btn><a href="{{ route('statuses.edit', $status->id) }}">Edit</a></btn>
+                            <button><a href="{{ route('statuses.edit', $status->id) }}">Edit</a></button>
 
                             <!-- Delete -->
                             <form action="{{ route('statuses.destroy', $status->id) }}" method="POST" style="display:inline;">

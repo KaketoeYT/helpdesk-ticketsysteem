@@ -1,5 +1,6 @@
 <div>
     <h1>Ticket bewerken</h1>
+    <button><a href="{{ route('tickets.index') }}">Terug</a></button>
 
     <form method="POST" action="{{ route('tickets.update', $ticket->id) }}">
         @csrf

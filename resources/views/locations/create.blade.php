@@ -1,5 +1,6 @@
 <div>
     <h1>Nieuwe Locatie Aanmaken</h1>
+    <button><a href="{{ route('locations.index') }}">Terug</a></button>
     
     <form action="{{ route('locations.store') }}" method="POST">
         @csrf

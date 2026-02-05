@@ -1,5 +1,6 @@
 <div>
     <h1>Nieuwe Status Aanmaken</h1>
+    <button><a href="{{ route('statuses.index') }}">Terug</a></button>
     
     <form action="{{ route('statuses.store') }}" method="POST">
         @csrf

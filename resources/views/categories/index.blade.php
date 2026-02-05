@@ -1,5 +1,6 @@
 <div class="container">
     <h1>Categories Overzicht</h1>
+    <button><a href="{{ route('categories.create') }}">Maak een nieuwe Categorie</a></button>
     
     @if($categories->isEmpty())
         <p>Er zijn geen categorieën.</p>
@@ -9,6 +10,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Naam</th>
+                    <th>Created At</th>
+                    <th>Acties</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +21,7 @@
                         <td>{{ $category->name }}</td>
                         <td>{{ $category->created_at }}</td>
                         <td>
-                              <btn><a href="{{ route('categories.edit', $category->id) }}">Edit</a></btn>
+                            <button><a href="{{ route('categories.edit', $category->id) }}">Edit</a></button>
                             <!-- Actions buttons -->
                             <form action="{{ route('categories.destroy', $category->id) }}" method="POST" style="display:inline;">
                                 @csrf

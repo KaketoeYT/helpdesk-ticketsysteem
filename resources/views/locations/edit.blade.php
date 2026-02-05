@@ -1,5 +1,7 @@
 <div>
     <h1>Locatie Bewerken</h1>
+    <button><a href="{{ route('locations.index') }}">Terug</a></button>
+
     <form action="{{ route('locations.update', $location->id) }}" method="POST">
         @csrf
         @method('PUT')

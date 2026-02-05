@@ -1,5 +1,6 @@
 <div>
     <h1>Nieuwe Categorie Aanmaken</h1>
+    <button><a href="{{ route('categories.index') }}">Terug</a></button>
     
     <form action="{{ route('categories.store') }}" method="POST">
         @csrf

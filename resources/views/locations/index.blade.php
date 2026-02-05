@@ -1,5 +1,6 @@
 <div class="container">
     <h1>Locations Overzicht</h1>
+    <button><a href="{{ route('locations.create') }}">Maak een nieuwe status</a></button>
     
     @if($locations->isEmpty())
         <p>Er zijn geen locaties.</p>
@@ -9,6 +10,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Naam</th>
+                    <th>Created At</th>
+                    <th>Acties</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +21,7 @@
                         <td>{{ $location->name }}</td>
                         <td>{{ $location->created_at }}</td>
                         <td>
-                              <btn><a href="{{ route('locations.edit', $location->id) }}">Edit</a></btn>
+                            <button><a href="{{ route('locations.edit', $location->id) }}">Edit</a></button>
                             <!-- Actions buttons -->
                             <form action="{{ route('locations.destroy', $location->id) }}" method="POST" style="display:inline;">
                                 @csrf

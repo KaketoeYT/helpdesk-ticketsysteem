@@ -1,5 +1,7 @@
 <div>
     <h1>Categorie Bewerken</h1>
+    <button><a href="{{ route('categories.index') }}">Terug</a></button>
+
     <form action="{{ route('categories.update', $category->id) }}" method="POST">
         @csrf
         @method('PUT')
