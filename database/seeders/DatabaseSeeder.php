@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Location;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,6 +26,9 @@ class DatabaseSeeder extends Seeder
             TicketSeeder::class,
             ChatSeeder::class,
             TicketAssignmentSeeder::class,
+            PrioritySeeder::class,
+            StatusSeeder::class,
+            LocationSeeder::class,
         ]);
     }
 }

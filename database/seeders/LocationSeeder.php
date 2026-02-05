@@ -6,27 +6,21 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PrioritySeeder extends Seeder
+class LocationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $priorities = [
+        $locations = [
             [
-                'number'=> 1,
+                'name'=>'Het Keukentje'
             ],
             [
-                'number'=> 2,
-            ],
-            [
-                'number'=> 3,
-            ],
-            [
-                'number'=> 4,
-            ],
+                'name'=>'De Grote Zandloper'
+            ]
         ];
-        DB::table('priorities')->insert($priorities);
+        DB::table('locations')->insert($locations);
     }
 }
