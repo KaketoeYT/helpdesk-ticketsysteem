@@ -15,18 +15,23 @@ class Ticket extends Model
         'location_id',
     ];
     
-    public function category()
-    {
-        return $this->hasOne(Category::class);
-    }
-
     public function chats()
     {
         return $this->hasMany(Chat::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function priority()
+    {
+        return $this->belongsTo(Priority::class);
+    }
+
     public function location()
     {
-        return $this->hasOne(location::class);
+        return $this->belongsTo(location::class);
     }
 }

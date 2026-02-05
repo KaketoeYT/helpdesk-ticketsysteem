@@ -22,8 +22,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', [Settings\AppearanceController::class, 'edit'])->name('settings.appearance.edit');
 });
 
-Route::get('/ticket/create', [TicketController::class, 'create'])->name('ticket.create');
-Route::post('/ticket', [TicketController::class, 'store'])->name('ticket.store');
+
+Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
+
+Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create');
+Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store');
+
+Route::delete('/tickets/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');
 
 
 require __DIR__ . '/auth.php';

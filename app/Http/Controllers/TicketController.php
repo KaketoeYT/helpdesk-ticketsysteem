@@ -15,7 +15,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $tickets = Ticket::with(['category', 'priority', 'location'])->get();
+
+        return view('tickets.index', compact('tickets'));
     }
 
     /**
@@ -27,7 +29,7 @@ class TicketController extends Controller
         $categories = Category::all();
         $locations = Location::all();
 
-        return view('ticket.create',compact('priorities','categories','locations'));
+        return view('tickets.create',compact('priorities','categories','locations'));
     }
 
     /**
@@ -52,6 +54,8 @@ class TicketController extends Controller
             'priority_id' => $validated['priority'],
             'location_id' => $validated['location'],
         ]);
+
+        return redirect()->route('tickets.index');
     }
 
     /**
@@ -81,8 +85,10 @@ class TicketController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ticket $ticket)
+    public function destroy($id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+        $ticket->delete();
+        return redirect()->route('tickets.index');
     }
 }
