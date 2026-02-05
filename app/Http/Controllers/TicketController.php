@@ -29,7 +29,7 @@ class TicketController extends Controller
         $categories = Category::all();
         $locations = Location::all();
 
-        return view('tickets.create',compact('priorities','categories','locations'));
+        return view('tickets.create', compact('priorities', 'categories', 'locations'));
     }
 
     /**
@@ -71,7 +71,12 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        //
+        return view('tickets.edit', [
+            'ticket' => $ticket,
+            'categories' => Category::all(),
+            'priorities' => Priority::all(),
+            'locations' => Location::all(),
+        ]);
     }
 
     /**
@@ -79,7 +84,23 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        //
+        $validated = $request->validate([
+            'subject' => 'required|string|max:255',
+            'category' => 'required|exists:categories,id',
+            'description' => 'required|string',
+            'priority' => 'required|exists:priorities,id',
+            'location' => 'required|exists:locations,id',
+        ]);
+
+        $ticket->update([
+            'subject' => $validated['subject'],
+            'category_id' => $validated['category'],
+            'description' => $validated['description'],
+            'priority_id' => $validated['priority'],
+            'location_id' => $validated['location'],
+        ]);
+
+        return redirect()->route('tickets.index');
     }
 
     /**
