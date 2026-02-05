@@ -16,11 +16,12 @@ return new class extends Migration
 
             $table->string('subject');
             $table->text('description');
-            $table->string('status')->default('open');
-
+            
+            
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('priority_id');
             $table->foreignId('location_id');
+            $table->foreignId('status_id');
 
             $table->timestamps();
         });

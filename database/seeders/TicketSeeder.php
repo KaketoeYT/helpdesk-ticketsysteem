@@ -17,7 +17,7 @@ class TicketSeeder extends Seeder
             [
                 'subject' => 'Login Issue',
                 'description' => 'Unable to login with correct credentials.',
-                'status' => 'open',
+                'status_id' => 1,
                 'priority_id' => 1,
                 'category_id' => 1,
                 'location_id' => 2,
@@ -25,7 +25,7 @@ class TicketSeeder extends Seeder
             [
                 'subject' => 'Page Not Loading',
                 'description' => 'The dashboard page is not loading properly.',
-                'status' => 'in_progress',
+                'status_id' => 2,
                 'priority_id' => 3,
                 'category_id' => 2,
                 'location_id' => 2,
@@ -33,7 +33,7 @@ class TicketSeeder extends Seeder
             [
                 'subject' => 'Feature Request',
                 'description' => 'Requesting a new feature for reporting.',
-                'status' => 'closed',
+                'status_id' => 3,
                 'priority_id' => 4,
                 'category_id' => 3,
                 'location_id' => 1,

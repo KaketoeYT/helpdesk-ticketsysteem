@@ -13,6 +13,7 @@ class Ticket extends Model
         'category_id',
         'priority_id',
         'location_id',
+        'status_id',
     ];
     
     public function chats()
@@ -33,5 +34,10 @@ class Ticket extends Model
     public function location()
     {
         return $this->belongsTo(location::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Priority;
+use App\Models\Status;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 
@@ -53,6 +54,7 @@ class TicketController extends Controller
             'category_id' => $validated['category'],
             'priority_id' => $validated['priority'],
             'location_id' => $validated['location'],
+            'status_id' => 1,
         ]);
 
         return redirect()->route('tickets.index');
@@ -76,6 +78,7 @@ class TicketController extends Controller
             'categories' => Category::all(),
             'priorities' => Priority::all(),
             'locations' => Location::all(),
+            'statuses' => Status::all(),
         ]);
     }
 
@@ -90,6 +93,7 @@ class TicketController extends Controller
             'description' => 'required|string',
             'priority' => 'required|exists:priorities,id',
             'location' => 'required|exists:locations,id',
+            'status' => 'required',
         ]);
 
         $ticket->update([
@@ -98,6 +102,7 @@ class TicketController extends Controller
             'description' => $validated['description'],
             'priority_id' => $validated['priority'],
             'location_id' => $validated['location'],
+            'status_id' => $validated['status'],
         ]);
 
         return redirect()->route('tickets.index');

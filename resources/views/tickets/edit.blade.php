@@ -61,6 +61,19 @@
             </select>
         </div>
 
+        <!-- status -->
+         <div>
+            <label for="status">status</label>
+            <select name="status" id="status" required>
+                @foreach ($statuses as $status)
+                    <option value="{{ $status->id }}"
+                        {{ old('status', $ticket->status_id) == $status->id ? 'selected' : '' }}>
+                        {{ $status->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
         <!-- submit -->
         <button type="submit">
             Update Ticket

@@ -11,8 +11,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Onderwerp</th>
+                    <th>Status</th>
                     <th>Category</th>
+                    <th>Onderwerp</th>
                     <th>Priority</th>
                     <th>Location</th>
                     <th>Created At</th>
@@ -23,8 +24,9 @@
                 @foreach($tickets as $ticket)
                     <tr>
                         <td>{{ $ticket->id }}</td>
-                        <td>{{ $ticket->subject }}</td>
+                        <td>{{ $ticket->status->name ?? '-' }}</td> <!-- ?? '-' laat een '-' zien als de status van de ticket null is -->
                         <td>{{ $ticket->category->name ?? '-' }}</td>
+                        <td>{{ $ticket->subject }}</td>
                         <td>{{ $ticket->priority->number ?? '-' }}</td>
                         <td>{{ $ticket->location->name ?? '-' }}</td>
                         <td>{{ $ticket->created_at }}</td>
