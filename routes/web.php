@@ -41,11 +41,11 @@ Route::put('/categories/{category}', [CategoryController::class, 'update'])->nam
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 // Routes voor locaties
-Route::get('/locaties', [LocationController::class, 'index'])->name('locations.index');
-Route::get('/locaties/create', [LocationController::class, 'create'])->name('locations.create');
-Route::post('/locaties', [LocationController::class, 'store'])->name('locations.store');
-Route::get('/locaties/{location}/edit', [LocationController::class, 'edit'])->name('locations.edit');
-Route::put('/locaties/{location}', [LocationController::class, 'update'])->name('locations.update');
-Route::delete('/locaties/{location}', [LocationController::class, 'destroy'])->name('locations.destroy');
+Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
+Route::get('/locations/create', [LocationController::class, 'create'])->name('locations.create');
+Route::post('/locations', [LocationController::class, 'store'])->name('locations.store');
+Route::get('/locations/{location}/edit', [LocationController::class, 'edit'])->name('locations.edit');
+Route::put('/locations/{location}', [LocationController::class, 'update'])->name('locations.update');
+Route::delete('/locations/{location}', [LocationController::class, 'destroy'])->name('locations.destroy');
 
 require __DIR__ . '/auth.php';
