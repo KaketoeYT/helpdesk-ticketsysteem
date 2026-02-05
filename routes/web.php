@@ -37,6 +37,6 @@ Route::get('/categories/create', [CategoryController::class, 'create'])->name('c
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
-Route::delete('/categories/{id}', [CategoryController::class::class, 'destroy'])->name('categories.destroy');
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 require __DIR__ . '/auth.php';
