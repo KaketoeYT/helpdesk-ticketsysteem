@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\TicketController;
@@ -40,5 +41,13 @@ Route::post('/categories', [CategoryController::class, 'store'])->name('categori
 Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+// Routes voor locaties
+Route::get('/locaties', [LocationController::class, 'index'])->name('locations.index');
+Route::get('/locaties/create', [LocationController::class, 'create'])->name('locations.create');
+Route::post('/locaties', [LocationController::class, 'store'])->name('locations.store');
+Route::get('/locaties/{location}/edit', [LocationController::class, 'edit'])->name('locations.edit');
+Route::put('/locaties/{location}', [LocationController::class, 'update'])->name('locations.update');
+Route::delete('/locaties/{location}', [LocationController::class, 'destroy'])->name('locations.destroy');
 
 require __DIR__ . '/auth.php';
