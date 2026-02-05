@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Location;
+use App\Models\Priority;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 
@@ -20,7 +23,11 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        $priorities = Priority::all();
+        $categories = Category::all();
+        $locations = Location::all();
+
+        return view('ticket.create',compact('priorities','categories','locations'));
     }
 
     /**
@@ -28,7 +35,23 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validatie
+        $validated = $request->validate([
+            'subject'     => 'required|string|max:255',
+            'description' => 'required|string',
+            'category'    => 'required|exists:categories,id',
+            'priority'    => 'required|exists:priorities,id',
+            'location'    => 'required|exists:locations,id',
+        ]);
+
+        // Ticket aanmaken
+        Ticket::create([
+            'subject'     => $validated['subject'],
+            'description' => $validated['description'],
+            'category_id' => $validated['category'],
+            'priority_id' => $validated['priority'],
+            'location_id' => $validated['location'],
+        ]);
     }
 
     /**
