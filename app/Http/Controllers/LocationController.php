@@ -12,7 +12,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $locations = location::all();
+        return view('locations.index', compact('locations'));
     }
 
     /**
@@ -20,7 +21,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('locations.create');
     }
 
     /**
@@ -28,7 +29,15 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:locations,name',
+        ]);
+
+        Location::create([
+            'name' => $validated['name'],
+        ]);
+
+        return redirect()->route('locations.index');
     }
 
     /**
@@ -44,7 +53,7 @@ class LocationController extends Controller
      */
     public function edit(location $location)
     {
-        //
+        return view('locations.edit', compact('location'));
     }
 
     /**
@@ -52,7 +61,15 @@ class LocationController extends Controller
      */
     public function update(Request $request, location $location)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:locations,name,' . $location->id,
+        ]);
+        
+        $location->update([
+            'name' => $validated['name'],
+        ]);
+
+        return redirect()->route('locations.index');
     }
 
     /**
@@ -60,6 +77,7 @@ class LocationController extends Controller
      */
     public function destroy(location $location)
     {
-        //
+        $location->delete();
+        return redirect()->route('locations.index');
     }
 }

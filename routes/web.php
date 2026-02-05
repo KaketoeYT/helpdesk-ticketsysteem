@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\StatusController;
@@ -47,5 +48,13 @@ Route::post('/statuses', [StatusController::class, 'store'])->name('statuses.sto
 Route::get('/statuses/{status}/edit', [StatusController::class, 'edit'])->name('statuses.edit');
 Route::put('/statuses/{status}', [StatusController::class, 'update'])->name('statuses.update');
 Route::delete('/statuses/{status}', [StatusController::class, 'destroy'])->name('statuses.destroy');
+
+// Routes voor locaties
+Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
+Route::get('/locations/create', [LocationController::class, 'create'])->name('locations.create');
+Route::post('/locations', [LocationController::class, 'store'])->name('locations.store');
+Route::get('/locations/{location}/edit', [LocationController::class, 'edit'])->name('locations.edit');
+Route::put('/locations/{location}', [LocationController::class, 'update'])->name('locations.update');
+Route::delete('/locations/{location}', [LocationController::class, 'destroy'])->name('locations.destroy');
 
 require __DIR__ . '/auth.php';
