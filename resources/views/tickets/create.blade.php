@@ -1,3 +1,5 @@
+<x-base-layout>
+
 <div>
     <h1>Ticket aanmaken</h1>
     <button><a href="{{ route('tickets.index') }}">Terug</a></button>
@@ -44,7 +46,7 @@
         </div>
 
         <!-- location -->
-         <div>
+        <div>
             <label for="location">location</label>
             <select name="location" id="location" required>
                 @foreach ($locations as $location)
@@ -62,3 +64,5 @@
         </button>
     </form>
 </div>
+
+</x-base-layout>

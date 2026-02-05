@@ -1,3 +1,5 @@
+<x-base-layout>
+
 <div class="container">
     <h1>Categories Overzicht</h1>
     <button><a href="{{ route('categories.create') }}">Maak een nieuwe Categorie</a></button>
@@ -35,3 +37,5 @@
         </table>
     @endif
 </div>
+
+</x-base-layout>

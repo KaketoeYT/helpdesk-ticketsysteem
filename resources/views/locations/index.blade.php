@@ -1,3 +1,5 @@
+<x-base-layout>
+
 <div class="container">
     <h1>Locations Overzicht</h1>
     <button><a href="{{ route('locations.create') }}">Maak een nieuwe status</a></button>
@@ -35,3 +37,5 @@
         </table>
     @endif
 </div>
+
+</x-base-layout>

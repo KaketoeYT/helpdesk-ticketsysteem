@@ -1,3 +1,5 @@
+<x-base-layout>
+
 <div class="container">
     <h1>Tickets Overzicht</h1>
     <button><a href="{{ route('tickets.create') }}">Maak een nieuwe Ticket</a></button>
@@ -29,9 +31,7 @@
                         <td>
                             <!-- Actions buttons -->
                             <!-- Edit -->
-                            <a href="{{ route('tickets.edit', $ticket->id)}}">
-                                <button type="button">Edit</button>
-                            </a>
+                            <button><a href="{{ route('tickets.edit', $ticket->id)}}">Edit</a></button>
 
                             <!-- Destroy -->
                             <form action="{{ route('tickets.destroy', $ticket->id) }}" method="POST" style="display:inline;">
@@ -46,3 +46,5 @@
         </table>
     @endif
 </div>
+
+</x-base-layout>

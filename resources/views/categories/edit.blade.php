@@ -1,3 +1,5 @@
+<x-base-layout>
+
 <div>
     <h1>Categorie Bewerken</h1>
     <button><a href="{{ route('categories.index') }}">Terug</a></button>
@@ -13,3 +15,5 @@
         
         <button type="submit">Categorie Bijwerken</button>
     </form>
+
+<x-base-layout>

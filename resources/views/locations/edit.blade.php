@@ -1,3 +1,5 @@
+<x-base-layout>
+
 <div>
     <h1>Locatie Bewerken</h1>
     <button><a href="{{ route('locations.index') }}">Terug</a></button>
@@ -13,3 +15,5 @@
         
         <button type="submit">Locatie Bijwerken</button>
     </form>
+
+</x-base-layout>

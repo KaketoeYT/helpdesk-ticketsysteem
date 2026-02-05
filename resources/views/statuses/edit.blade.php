@@ -1,3 +1,5 @@
+<x-base-layout>
+
 <div>
     <h1>Status Bewerken</h1>
     <button><a href="{{ route('statuses.index') }}">Terug</a></button>
@@ -13,3 +15,6 @@
         
         <button type="submit">Status Bijwerken</button>
     </form>
+</div>
+
+</x-base-layout>

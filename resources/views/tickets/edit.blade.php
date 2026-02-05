@@ -1,3 +1,5 @@
+<x-base-layout>
+
 <div>
     <h1>Ticket bewerken</h1>
     <button><a href="{{ route('tickets.index') }}">Terug</a></button>
@@ -65,3 +67,5 @@
         </button>
     </form>
 </div>
+
+</x-base-layout>

@@ -1,3 +1,5 @@
+<x-base-layout>
+
 <div>
     <h1>Nieuwe Status Aanmaken</h1>
     <button><a href="{{ route('statuses.index') }}">Terug</a></button>
@@ -13,3 +15,5 @@
         <button type="submit">Status Aanmaken</button>
     </form>
 </div>
+
+</x-base-layout>
