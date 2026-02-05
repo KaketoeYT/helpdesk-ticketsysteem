@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'country',
+        'city',
+        'street',
+        'street_number',
+    ];
 
     public function ticket()
     {

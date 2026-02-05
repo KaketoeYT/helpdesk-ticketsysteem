@@ -15,10 +15,18 @@ class LocationSeeder extends Seeder
     {
         $locations = [
             [
-                'name'=>'Het Keukentje'
+                'name' => 'Het Keukentje',
+                'country' => 'Nederland',
+                'city' => 'Haarlem',
+                'street' => 'Zijlweg',
+                'street_number' => '12',
             ],
             [
-                'name'=>'De Grote Zandloper'
+                'name' => 'De Grote Zandloper',
+                'country' => 'Nederland',
+                'city' => 'Ijmuiden',
+                'street' => 'TijdStraat',
+                'street_number' => '233B',
             ]
         ];
         DB::table('locations')->insert($locations);

@@ -12,6 +12,10 @@
                 <tr>
                     <th>ID</th>
                     <th>Naam</th>
+                    <th>Land</th>
+                    <th>Stad</th>
+                    <th>Straat</th>
+                    <th>Nummer</th>
                     <th>Created At</th>
                     <th>Acties</th>
                 </tr>
@@ -21,6 +25,10 @@
                     <tr>
                         <td>{{ $location->id }}</td>
                         <td>{{ $location->name }}</td>
+                        <td>{{ $location->country }}</td>
+                        <td>{{ $location->city }}</td>
+                        <td>{{ $location->street }}</td>
+                        <td>{{ $location->street_number }}</td>
                         <td>{{ $location->created_at }}</td>
                         <td>
                             <button><a href="{{ route('locations.edit', $location->id) }}">Edit</a></button>

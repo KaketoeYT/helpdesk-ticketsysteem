@@ -16,6 +16,11 @@ return new class extends Migration
 
             $table->string('name');
 
+            $table->string('country');
+            $table->string('city');
+            $table->string('street');
+            $table->string('street_number');
+
             $table->timestamps();
         });
     }

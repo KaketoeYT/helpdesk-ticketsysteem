@@ -31,10 +31,18 @@ class LocationController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:locations,name',
+            'country' => 'required',
+            'city' => 'required',
+            'street' => 'required',
+            'street_number' => 'required',
         ]);
 
         Location::create([
             'name' => $validated['name'],
+            'country' => $validated['country'],
+            'city' => $validated['city'],
+            'street' => $validated['street'],
+            'street_number' => $validated['street_number'],
         ]);
 
         return redirect()->route('locations.index');
@@ -64,7 +72,7 @@ class LocationController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:locations,name,' . $location->id,
         ]);
-        
+
         $location->update([
             'name' => $validated['name'],
         ]);
