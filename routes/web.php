@@ -25,6 +25,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', [Settings\AppearanceController::class, 'edit'])->name('settings.appearance.edit');
 });
 
+// Routes voor users
+
+
 // Routes voor Tickets
 Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
 Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create');

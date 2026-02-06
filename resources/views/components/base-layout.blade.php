@@ -8,5 +8,5 @@
 {{$slot}}
 
 <footer>
-Footer 
+    DE footer des dooodss WOAHHHH
 </footer>
