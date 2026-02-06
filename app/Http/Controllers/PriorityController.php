@@ -12,7 +12,8 @@ class PriorityController extends Controller
      */
     public function index()
     {
-        //
+        $priorities = Priority::all();
+        return view('priorities.index', compact('priorities'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PriorityController extends Controller
      */
     public function create()
     {
-        //
+        return view('priorities.create');
     }
 
     /**
@@ -28,7 +29,15 @@ class PriorityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'number' => 'required|string|max:255|unique:priorities,number',
+        ]);
+
+        Priority::create([
+            'number' => $validated['number'],
+        ]);
+
+        return redirect()->route('priorities.index');
     }
 
     /**
@@ -44,7 +53,7 @@ class PriorityController extends Controller
      */
     public function edit(Priority $priority)
     {
-        //
+        return view('priorities.edit', compact('priority'));
     }
 
     /**
@@ -52,7 +61,15 @@ class PriorityController extends Controller
      */
     public function update(Request $request, Priority $priority)
     {
-        //
+        $validated = $request->validate([
+            'number' => 'required|string|max:255|unique:priorities,number,' . $priority->id,
+        ]);
+
+        $priority->update([
+            'number' => $validated['number'],
+        ]);
+
+        return redirect()->route('priorities.index');
     }
 
     /**
@@ -60,6 +77,7 @@ class PriorityController extends Controller
      */
     public function destroy(Priority $priority)
     {
-        //
+        $priority->delete();
+        return redirect()->route('priorities.index');
     }
 }

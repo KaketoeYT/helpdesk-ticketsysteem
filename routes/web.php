@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\StatusController;
@@ -24,9 +25,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('settings/password', [Settings\PasswordController::class, 'update'])->name('settings.password.update');
     Route::get('settings/appearance', [Settings\AppearanceController::class, 'edit'])->name('settings.appearance.edit');
 });
-
-// Routes voor users
-
 
 // Routes voor Tickets
 Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
@@ -59,5 +57,13 @@ Route::post('/locations', [LocationController::class, 'store'])->name('locations
 Route::get('/locations/{location}/edit', [LocationController::class, 'edit'])->name('locations.edit');
 Route::put('/locations/{location}', [LocationController::class, 'update'])->name('locations.update');
 Route::delete('/locations/{location}', [LocationController::class, 'destroy'])->name('locations.destroy');
+
+// Routes voor Priorities
+Route::get('/priorities', [PriorityController::class, 'index'])->name('priorities.index');
+Route::get('/priorities/create', [PriorityController::class, 'create'])->name('priorities.create');
+Route::post('/priorities', [PriorityController::class, 'store'])->name('priorities.store');
+Route::get('/priorities/{priority}/edit', [PriorityController::class, 'edit'])->name('priorities.edit');
+Route::put('/priorities/{priority}', [PriorityController::class, 'update'])->name('priorities.update');
+Route::delete('/priorities/{priority}', [PriorityController::class, 'destroy'])->name('priorities.destroy');
 
 require __DIR__ . '/auth.php';

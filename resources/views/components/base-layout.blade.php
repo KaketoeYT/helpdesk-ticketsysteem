@@ -3,10 +3,11 @@
     <a href="{{route('categories.index')}}">Categories</a> |
     <a href="{{route('statuses.index')}}">Statuses</a> |
     <a href="{{route('locations.index')}}">Locations</a> |
+    <a href="{{route('priorities.index')}}">Priorities</a> |
 </nav>
 
 {{$slot}}
 
 <footer>
-    DE footer des dooodss WOAHHHH
+    footer
 </footer>

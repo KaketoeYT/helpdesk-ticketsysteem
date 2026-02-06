@@ -16,4 +16,4 @@
         <button type="submit">Categorie Bijwerken</button>
     </form>
 
-<x-base-layout>
+</x-base-layout>
