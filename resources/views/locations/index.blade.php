@@ -2,7 +2,7 @@
 
 <div class="container">
     <h1>Locations Overzicht</h1>
-    <button><a href="{{ route('locations.create') }}">Maak een nieuwe status</a></button>
+    <button><a href="{{ route('locations.create') }}">Maak een nieuwe locatie</a></button>
     
     @if($locations->isEmpty())
         <p>Er zijn geen locaties.</p>
