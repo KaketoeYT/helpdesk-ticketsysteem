@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StatusStoreRequest;
 use App\Models\Status;
 use Illuminate\Http\Request;
 
@@ -29,14 +30,8 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name',
-        ]);
 
-        Status::create([
-            'name' => $validated['name'],
-        ]);
-
+        Status::create($request->validated());
         return redirect()->route('statuses.index');
     }
 
@@ -59,16 +54,9 @@ class StatusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Status $status)
+    public function update(StatusStoreRequest $request, Status $status)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name,' . $status->id,
-        ]);
-
-        $status->update([
-            'name' => $validated['name'],
-        ]);
-
+        $status->update($request->validated());
         return redirect()->route('statuses.index');
     }
 
