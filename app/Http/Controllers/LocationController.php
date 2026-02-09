@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LocationStoreRequest;
 use App\Models\location;
 use Illuminate\Http\Request;
 
@@ -27,24 +28,9 @@ class LocationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LocationStoreRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:locations,name',
-            'country' => 'required',
-            'city' => 'required',
-            'street' => 'required',
-            'street_number' => 'required',
-        ]);
-
-        Location::create([
-            'name' => $validated['name'],
-            'country' => $validated['country'],
-            'city' => $validated['city'],
-            'street' => $validated['street'],
-            'street_number' => $validated['street_number'],
-        ]);
-
+        Location::create($request->validated());
         return redirect()->route('locations.index');
     }
 
@@ -67,16 +53,9 @@ class LocationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, location $location)
+    public function update(LocationStoreRequest $request, location $location)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:locations,name,' . $location->id,
-        ]);
-
-        $location->update([
-            'name' => $validated['name'],
-        ]);
-
+        $location->update($request->validated());
         return redirect()->route('locations.index');
     }
 
