@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PriorityStoreRequest;
 use App\Models\Priority;
 use Illuminate\Http\Request;
 
@@ -27,16 +28,9 @@ class PriorityController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PriorityStoreRequest $request)
     {
-        $validated = $request->validate([
-            'number' => 'required|string|max:255|unique:priorities,number',
-        ]);
-
-        Priority::create([
-            'number' => $validated['number'],
-        ]);
-
+        Priority::create($request->validated());
         return redirect()->route('priorities.index');
     }
 
@@ -59,16 +53,9 @@ class PriorityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Priority $priority)
+    public function update(PriorityStoreRequest $request, Priority $priority)
     {
-        $validated = $request->validate([
-            'number' => 'required|string|max:255|unique:priorities,number,' . $priority->id,
-        ]);
-
-        $priority->update([
-            'number' => $validated['number'],
-        ]);
-
+        $priority->update($request->validated());
         return redirect()->route('priorities.index');
     }
 
