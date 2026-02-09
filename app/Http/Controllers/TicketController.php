@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TicketStoreRequest;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Priority;
@@ -29,34 +30,18 @@ class TicketController extends Controller
         $priorities = Priority::all();
         $categories = Category::all();
         $locations = Location::all();
+        $statuses = Status::all();
 
-        return view('tickets.create', compact('priorities', 'categories', 'locations'));
+        return view('tickets.create', compact('priorities', 'categories', 'locations', 'statuses'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TicketStoreRequest $request)
     {
-        // Validatie
-        $validated = $request->validate([
-            'subject'     => 'required|string|max:255',
-            'description' => 'required|string',
-            'category'    => 'required|exists:categories,id',
-            'priority'    => 'required|exists:priorities,id',
-            'location'    => 'required|exists:locations,id',
-        ]);
-
-        // Ticket aanmaken
-        Ticket::create([
-            'subject'     => $validated['subject'],
-            'description' => $validated['description'],
-            'category_id' => $validated['category'],
-            'priority_id' => $validated['priority'],
-            'location_id' => $validated['location'],
-            'status_id' => 1,
-        ]);
-
+        
+        Ticket::create($request->validated());
         return redirect()->route('tickets.index');
     }
 
@@ -85,26 +70,9 @@ class TicketController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ticket $ticket)
+    public function update(TicketStoreRequest $request, Ticket $ticket)
     {
-        $validated = $request->validate([
-            'subject' => 'required|string|max:255',
-            'category' => 'required|exists:categories,id',
-            'description' => 'required|string',
-            'priority' => 'required|exists:priorities,id',
-            'location' => 'required|exists:locations,id',
-            'status' => 'required',
-        ]);
-
-        $ticket->update([
-            'subject' => $validated['subject'],
-            'category_id' => $validated['category'],
-            'description' => $validated['description'],
-            'priority_id' => $validated['priority'],
-            'location_id' => $validated['location'],
-            'status_id' => $validated['status'],
-        ]);
-
+        $ticket->update($request->validated());
         return redirect()->route('tickets.index');
     }
 
