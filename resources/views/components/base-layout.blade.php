@@ -4,6 +4,8 @@
     <a href="{{route('statuses.index')}}">Statuses</a> |
     <a href="{{route('locations.index')}}">Locations</a> |
     <a href="{{route('priorities.index')}}">Priorities</a> |
+
+    <a href="{{route('login')}}">Login</a> |
 </nav>
 
 {{$slot}}
