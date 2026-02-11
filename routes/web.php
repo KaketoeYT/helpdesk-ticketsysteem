@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -66,6 +67,11 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::put('/priorities/{priority}', [PriorityController::class, 'update'])->name('priorities.update');
     Route::delete('/priorities/{priority}', [PriorityController::class, 'destroy'])->name('priorities.destroy');
 });
+
+// User routes
+Route::get('/userdashboard', [UserDashboardController::class, 'index'])->name('userdashboard.index');
+Route::get('/userdashboard/create', [UserDashboardController::class, 'create'])->name('userdashboard.create');
+Route::post('/userdashboard', [UserDashboardController::class, 'store'])->name('userdashboard.store');
 
 // Routes voor Tickets
 Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
