@@ -7,8 +7,8 @@
 <x-base-layout>
 
     <div class="container">
-        <h1>Tickets Overzicht</h1>
-        <button><a href="{{ route('tickets.create') }}">Maak een nieuwe Ticket</a></button>
+        <h1>Uw Tickets</h1>
+        <button><a href="{{ route('userdashboard.create') }}">Maak een nieuwe Ticket</a></button>
 
         @if ($tickets->isEmpty())
             <p>U heeft nog geen tickets.</p>
