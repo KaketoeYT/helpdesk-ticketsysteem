@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignId('priority_id');
             $table->foreignId('location_id');
             $table->foreignId('status_id');
-
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

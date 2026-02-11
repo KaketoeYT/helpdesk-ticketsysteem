@@ -21,6 +21,7 @@ class TicketSeeder extends Seeder
                 'priority_id' => 1,
                 'category_id' => 1,
                 'location_id' => 2,
+                'user_id' => 13,
             ],
             [
                 'subject' => 'Page Not Loading',
@@ -29,6 +30,7 @@ class TicketSeeder extends Seeder
                 'priority_id' => 3,
                 'category_id' => 2,
                 'location_id' => 2,
+                'user_id' => 1,
             ],
             [
                 'subject' => 'Feature Request',
@@ -37,6 +39,7 @@ class TicketSeeder extends Seeder
                 'priority_id' => 4,
                 'category_id' => 3,
                 'location_id' => 1,
+                'user_id' => 2,
             ],
         ];
         DB::table('tickets')->insert($tickets);
