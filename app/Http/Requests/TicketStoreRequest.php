@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TicketStoreRequest extends FormRequest
 {
@@ -12,6 +13,13 @@ class TicketStoreRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void // Draait eerst en authenticeert de gebruiker, voegt daarna toe aan de request
+    {
+        $this->merge([
+            'user_id' => Auth::id(),
+        ]);
     }
 
     /**
@@ -28,6 +36,7 @@ class TicketStoreRequest extends FormRequest
             'priority_id'  => 'required|exists:priorities,id',
             'location_id'  => 'required|exists:locations,id',
             'status_id'    => 'required|exists:statuses,id',
+            'user_id'      => 'required|exists:users,id',
         ];
     }
 }
