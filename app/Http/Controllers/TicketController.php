@@ -40,7 +40,17 @@ class TicketController extends Controller
      */
     public function store(TicketStoreRequest $request)
     {
-        Ticket::create($request->validated());
+        
+        $defaultStatus = Status::where('is_default', true)->first();
+        
+        $data = $request->validated();
+
+        // Alleen zetten als er geen status is meegestuurd
+        if (!isset($data['status_id'])) {
+            $data['status_id'] = $defaultStatus?->id;
+        }
+
+        Ticket::create($data);
         return redirect()->route('tickets.index');
     }
 

@@ -23,6 +23,7 @@ class StatusStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255|unique:categories,name',
+            'is_default' => 'boolean',
         ];
     }
 }

@@ -12,6 +12,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Naam</th>
+                    <th>Standaard?</th>
                     <th>Created at</th>
                     <th>Acties</th>
                 </tr>
@@ -21,6 +22,7 @@
                     <tr>
                         <td>{{ $status->id }}</td>
                         <td>{{ $status->name }}</td>
+                        <td>{{ $status->is_default }}</td>
                         <td>{{ $status->created_at }}</td>
                         <td>
                             <!-- Actions buttons -->

@@ -11,6 +11,18 @@
             <label for="name">Status Naam:</label>
             <input type="text" id="name" name="name" value="{{ old('name') }}" required>
         </div>
+
+        <div>
+            <label>
+                Standaard status:
+                <input 
+                    type="checkbox" 
+                    name="is_default" 
+                    value="1"
+                    {{ old('is_default') ? 'checked' : '' }}
+                >
+            </label>
+        </div>
         
         <button type="submit">Status Aanmaken</button>
     </form>

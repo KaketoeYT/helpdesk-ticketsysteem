@@ -35,7 +35,7 @@ class TicketStoreRequest extends FormRequest
             'category_id'  => 'required|exists:categories,id',
             'priority_id'  => 'required|exists:priorities,id',
             'location_id'  => 'required|exists:locations,id',
-            'status_id'    => 'required|exists:statuses,id',
+            'status_id'    => 'exists:statuses,id',
             'user_id'      => 'required|exists:users,id',
         ];
     }
