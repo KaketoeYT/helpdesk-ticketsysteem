@@ -33,10 +33,10 @@
                             <td>
                                 <!-- Actions buttons -->
                                 <!-- Edit -->
-                                <button><a href="{{ route('tickets.edit', $ticketAssignment->ticket->id) }}">Edit</a></button>
+                                <button><a href="{{ route('ticket_assignments.edit', $ticketAssignment->id) }}">Edit</a></button>
 
                                 <!-- Destroy -->
-                                <form action="{{ route('tickets.destroy', $ticketAssignment->ticket->id) }}" method="POST"
+                                <form action="{{ route('ticket_assignments.destroy', $ticketAssignment->id) }}" method="POST"
                                     style="display:inline;">
                                     @csrf
                                     @method('DELETE')
