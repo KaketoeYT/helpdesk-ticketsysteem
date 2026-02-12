@@ -22,7 +22,6 @@ class TicketAssignmentStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ticket_id' => 'required|exists:tickets,id',
             'user_id' => 'required|exists:users,id',
         ];
     }

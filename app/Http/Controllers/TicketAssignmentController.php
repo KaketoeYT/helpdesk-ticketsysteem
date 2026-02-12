@@ -51,9 +51,8 @@ class TicketAssignmentController extends Controller
      */
     public function edit(TicketAssignment $ticketAssignment)
     {
-        $users = User::all();
-        $tickets = Ticket::all();
-        return view('ticket_assignments.edit', compact('ticketAssignment', 'users', 'tickets'));
+        $users = User::where('role', 'admin')->orWhere('role', 'worker')->get();    
+        return view('ticket_assignments.edit', compact('ticketAssignment', 'users'));
     }
 
     /**
