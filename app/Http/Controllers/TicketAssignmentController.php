@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TicketAssignmentStoreRequest;
+use App\Models\Ticket;
 use App\Models\TicketAssignment;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TicketAssignmentController extends Controller
@@ -12,7 +15,8 @@ class TicketAssignmentController extends Controller
      */
     public function index()
     {
-        //
+        $ticketAssignments = TicketAssignment::with(['ticket', 'user'])->get();
+        return view('ticket_assignments.index', compact('ticketAssignments'));
     }
 
     /**
@@ -20,15 +24,18 @@ class TicketAssignmentController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::where('role', 'admin')->orWhere('role', 'worker')->get();
+        $tickets = Ticket::all();
+        return view('ticket_assignments.create', compact('users', 'tickets'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TicketAssignmentStoreRequest $request)
     {
-        //
+        TicketAssignment::create($request->validated());
+        return redirect()->route('ticket_assignments.index');
     }
 
     /**
@@ -44,15 +51,17 @@ class TicketAssignmentController extends Controller
      */
     public function edit(TicketAssignment $ticketAssignment)
     {
-        //
+        $users = User::where('role', 'admin')->orWhere('role', 'worker')->get();    
+        return view('ticket_assignments.edit', compact('ticketAssignment', 'users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TicketAssignment $ticketAssignment)
+    public function update(TicketAssignmentStoreRequest $request, TicketAssignment $ticketAssignment)
     {
-        //
+        $ticketAssignment->update($request->validated());
+        return redirect()->route('ticket_assignments.index');
     }
 
     /**
@@ -60,6 +69,7 @@ class TicketAssignmentController extends Controller
      */
     public function destroy(TicketAssignment $ticketAssignment)
     {
-        //
+        $ticketAssignment->delete();
+        return redirect()->route('ticket_assignments.index');
     }
 }

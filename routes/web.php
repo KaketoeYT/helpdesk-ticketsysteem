@@ -7,6 +7,7 @@ use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\TicketAssignmentController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Route;
@@ -80,5 +81,12 @@ Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store
 Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
 Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
 Route::delete('/tickets/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');
+
+Route::get('/ticket_assignment', [TicketAssignmentController::class, 'index'])->name('ticket_assignments.index');
+Route::get('/ticket_assignment/create', [TicketAssignmentController::class, 'create'])->name('ticket_assignments.create');
+Route::post('/ticket_assignment', [TicketAssignmentController::class, 'store'])->name('ticket_assignments.store');
+Route::get('/ticket_assignment/{ticketAssignment}/edit', [TicketAssignmentController::class, 'edit'])->name('ticket_assignments.edit');
+Route::put('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'update'])->name('ticket_assignments.update');
+Route::delete('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'destroy'])->name('ticket_assignments.destroy');
 
 require __DIR__ . '/auth.php';
