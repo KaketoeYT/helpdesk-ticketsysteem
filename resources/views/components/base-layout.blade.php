@@ -2,6 +2,7 @@
    @auth
        @if (auth()->user()->role === 'admin')
             <a href="{{route('tickets.index')}}">Tickets</a> |
+            <a href="{{route('ticket_assignments.index')}}">Ticket Assignments</a> |
             <a href="{{route('users.index')}}">Users</a> |
             <a href="{{route('categories.index')}}">Categories</a> |
             <a href="{{route('statuses.index')}}">Statuses</a> |
