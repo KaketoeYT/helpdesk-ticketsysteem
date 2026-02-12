@@ -21,8 +21,8 @@
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
-                            <td>{{ $user->created_at }}</td>
                             <td>{{ $user->role }}</td>
+                            <td>{{ $user->created_at }}</td>
                             <td>
                                 <!-- Actions buttons -->
                                 <!-- Edit -->

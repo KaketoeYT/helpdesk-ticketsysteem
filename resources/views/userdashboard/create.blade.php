@@ -71,19 +71,6 @@
                 </select>
             </div>
 
-            {{-- Status --}}
-            <div>
-                <label for="status_id">Status</label><br>
-                <select name="status_id" id="status_id" required>
-                    <option value="">-- kies status --</option>
-                    @foreach ($statuses as $status)
-                        <option value="{{ $status->id }}" {{ old('status_id') == $status->id ? 'selected' : '' }}>
-                            {{ $status->name }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-
             {{-- Submit --}}
             <div>
                 <button type="submit">Ticket aanmaken</button>

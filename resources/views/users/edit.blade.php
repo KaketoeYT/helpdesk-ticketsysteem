@@ -4,6 +4,15 @@
     <h1>User Bewerken</h1>
     <button><a href="{{ route('users.index') }}">Terug</a></button>
 
+    {{-- Validation errors --}}
+    @if ($errors->any())
+        <ul style="color: red;">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <form action="{{ route('users.update', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -24,9 +33,11 @@
             <label for="role">Role:</label>
             <select id="role" name="role" required>
                 <option value="">-- kies role --</option>
-                <option value="admin" {{ old('role', $user->role) == 'admin'}}>Admin</option>
-                <option value="worker" {{ old('role', $user->role) == 'worker'}}>Worker</option>
-                <option value="user" {{ old('role', $user->role) == 'user'}}>User</option>
+                
+                <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}> Admin </option>
+                <option value="worker" {{ old('role', $user->role) == 'worker' ? 'selected' : '' }}> Worker </option>
+                <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}> User </option>
+
             </select>
         </div>
         

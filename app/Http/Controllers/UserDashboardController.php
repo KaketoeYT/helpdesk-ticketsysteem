@@ -16,9 +16,8 @@ class UserDashboardController extends Controller
         $priorities = Priority::all();
         $categories = Category::all();
         $locations = Location::all();
-        $statuses = Status::all();
 
-        return view('userdashboard.create', compact('priorities', 'categories', 'locations', 'statuses'));
+        return view('userdashboard.create', compact('priorities', 'categories', 'locations'));
     }
 
     public function store(TicketStoreRequest $request)
