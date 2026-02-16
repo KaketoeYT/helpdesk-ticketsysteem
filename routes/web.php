@@ -67,7 +67,17 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::get('/priorities/{priority}/edit', [PriorityController::class, 'edit'])->name('priorities.edit');
     Route::put('/priorities/{priority}', [PriorityController::class, 'update'])->name('priorities.update');
     Route::delete('/priorities/{priority}', [PriorityController::class, 'destroy'])->name('priorities.destroy');
-});
+
+    // Routes voor ticket assignmentss
+    Route::get('/ticket_assignment', [TicketAssignmentController::class, 'index'])->name('ticket_assignments.index');
+    Route::get('/ticket_assignment/create', [TicketAssignmentController::class, 'create'])->name('ticket_assignments.create');
+    Route::post('/ticket_assignment', [TicketAssignmentController::class, 'store'])->name('ticket_assignments.store');
+    Route::get('/ticket_assignment/{ticketAssignment}/edit', [TicketAssignmentController::class, 'edit'])->name('ticket_assignments.edit');
+    Route::put('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'update'])->name('ticket_assignments.update');
+    Route::delete('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'destroy'])->name('ticket_assignments.destroy');
+    });
+    
+
 
 // User routes
 Route::get('/userdashboard', [UserDashboardController::class, 'index'])->name('userdashboard.index');
@@ -82,11 +92,5 @@ Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('t
 Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
 Route::delete('/tickets/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');
 
-Route::get('/ticket_assignment', [TicketAssignmentController::class, 'index'])->name('ticket_assignments.index');
-Route::get('/ticket_assignment/create', [TicketAssignmentController::class, 'create'])->name('ticket_assignments.create');
-Route::post('/ticket_assignment', [TicketAssignmentController::class, 'store'])->name('ticket_assignments.store');
-Route::get('/ticket_assignment/{ticketAssignment}/edit', [TicketAssignmentController::class, 'edit'])->name('ticket_assignments.edit');
-Route::put('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'update'])->name('ticket_assignments.update');
-Route::delete('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'destroy'])->name('ticket_assignments.destroy');
 
 require __DIR__ . '/auth.php';
