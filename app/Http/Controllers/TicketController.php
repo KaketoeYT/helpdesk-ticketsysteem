@@ -19,7 +19,7 @@ class TicketController extends Controller
     {
         $tickets = Ticket::with(['category', 'priority', 'location'])->get();
 
-        return view('tickets.index', compact('tickets'));
+        return view('tickets.index_test', compact('tickets'));
     }
 
     /**
@@ -67,7 +67,7 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        return view('tickets.edit', [
+        return view('tickets.edit_test', [
             'ticket' => $ticket,
             'categories' => Category::all(),
             'priorities' => Priority::all(),

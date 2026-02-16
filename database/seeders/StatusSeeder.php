@@ -15,13 +15,16 @@ class StatusSeeder extends Seeder
     {
         $statuses = [
             [
-                'name' => 'Open'
+                'name' => 'Open',
+                'is_default' => true
             ],
             [
-                'name' => 'In behandeling'
+                'name' => 'In behandeling',
+                'is_default' => false
             ],
             [
-                'name' => 'Afgehandeld'
+                'name' => 'Afgehandeld',
+                'is_default' => false
             ]
         ];
         DB::table('statuses')->insert($statuses);
