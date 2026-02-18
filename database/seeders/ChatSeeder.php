@@ -16,18 +16,18 @@ class ChatSeeder extends Seeder
         $chats = [
             [
                 'message' => 'Probleem is niet verholpen please hellup mij!',
-                'ticket' => 1,
-                'user' => 1,
+                'ticket_id' => 1,
+                'user_id' => 1,
             ],
             [
                 'message' => 'Waarom werkt het niet?',
-                'ticket' => 2,
-                'user' => 2,
+                'ticket_id' => 2,
+                'user_id' => 2,
             ],
             [
                 'message' => 'Hellup',
-                'ticket' => 3,
-                'user' => 3,
+                'ticket_id' => 3,
+                'user_id' => 3,
             ]
         ];
         DB::table('chats')->insert($chats);

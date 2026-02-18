@@ -17,8 +17,8 @@ return new class extends Migration
 
             $table->string('message');
 
-            $table->foreignId('ticket')->onDelete('cascade');
-            $table->foreignId('user');
+            $table->foreignId('ticket_id')->constrained('tickets')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         });
     }
 
