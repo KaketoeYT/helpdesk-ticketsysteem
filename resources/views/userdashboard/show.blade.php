@@ -18,6 +18,14 @@
         }
 
         /* Message Bubbles */
+        .chat-timestamp {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            display: block;
+            margin-top: 8px;
+            text-align: right;
+        }
+
         .chat-list {
             list-style: none;
             padding: 0;
@@ -43,6 +51,10 @@
             margin-left: auto;
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 2px;
+
+            .chat-timestamp {
+                text-align: left;
+            }
         }
 
         .chat-user-name {
@@ -51,14 +63,6 @@
             font-weight: 700;
             display: block;
             margin-bottom: 4px;
-        }
-
-        .chat-timestamp {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            display: block;
-            margin-top: 8px;
-            text-align: right;
         }
 
         /* Input Styling */
