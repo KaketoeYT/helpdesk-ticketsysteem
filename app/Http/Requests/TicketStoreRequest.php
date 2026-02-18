@@ -17,9 +17,12 @@ class TicketStoreRequest extends FormRequest
 
     protected function prepareForValidation(): void // Draait eerst en authenticeert de gebruiker, voegt daarna toe aan de request
     {
-        $this->merge([
-            'user_id' => Auth::id(),
-        ]);
+        // Voeg user_id alleen toe bij create (POST), niet bij update
+        if ($this->isMethod('post')) {
+            $this->merge([
+                'user_id' => Auth::id(),
+            ]);
+        }
     }
 
     /**
@@ -29,14 +32,28 @@ class TicketStoreRequest extends FormRequest
      */
     public function rules(): array
     {
+        // Full required rules for creating a ticket (POST)
+        if ($this->isMethod('post')) {
+            return [
+                'subject'      => 'required|string|max:255',
+                'description'  => 'required|string',
+                'category_id'  => 'required|exists:categories,id',
+                'priority_id'  => 'required|exists:priorities,id',
+                'location_id'  => 'required|exists:locations,id',
+                'status_id'    => 'exists:statuses,id',
+                'user_id'      => 'required|exists:users,id',
+            ];
+        }
+
+        // Allow partial updates for editing (PUT/PATCH)
         return [
-            'subject'      => 'required|string|max:255',
-            'description'  => 'required|string',
-            'category_id'  => 'required|exists:categories,id',
-            'priority_id'  => 'required|exists:priorities,id',
-            'location_id'  => 'required|exists:locations,id',
-            'status_id'    => 'exists:statuses,id',
-            'user_id'      => 'required|exists:users,id',
+            'subject'      => 'sometimes|string|max:255',
+            'description'  => 'sometimes|string',
+            'category_id'  => 'sometimes|exists:categories,id',
+            'priority_id'  => 'sometimes|exists:priorities,id',
+            'location_id'  => 'sometimes|exists:locations,id',
+            'status_id'    => 'sometimes|exists:statuses,id',
+            'user_id'      => 'sometimes|exists:users,id',
         ];
     }
 }

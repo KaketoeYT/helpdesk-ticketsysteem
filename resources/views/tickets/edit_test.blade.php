@@ -62,6 +62,15 @@
     </style>
 
     <div class="container mt-5">
+        {{-- Validation errors --}}
+        @if ($errors->any())
+            <ul style="color: red;">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+
         <div class="d-flex justify-content-between align-items-center mb-4 max-width-800 mx-auto"
             style="max-width: 800px;">
             <div>

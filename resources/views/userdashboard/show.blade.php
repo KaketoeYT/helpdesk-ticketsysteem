@@ -80,6 +80,11 @@
             box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25);
         }
 
+        .form-control-dark::placeholder {
+            color: #f8fafc;
+            opacity: 0.7;
+        }
+
         .btn-send {
             background-color: #4f46e5;
             border: none;
@@ -93,24 +98,62 @@
             transform: translateY(-1px);
         }
 
-        /* Custom Scrollbar for Chat */
-        .chat-list::-webkit-scrollbar {
-            width: 6px;
-        }
-        .chat-list::-webkit-scrollbar-thumb {
-            background: #334155;
+        /* Styled original issue description */
+        .ticket-description {
+            background: linear-gradient(180deg, rgba(51,65,85,0.12), rgba(17,24,39,0.06));
+            border: 1px solid rgba(51,65,85,0.6);
+            padding: 16px;
             border-radius: 10px;
+            color: #e6eef8;
+        }
+        .ticket-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #a5b4fc;
+            display: block;
+        }
+        .ticket-subject {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #f8fafc;
+        }
+        .ticket-meta {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+        .ticket-body {
+            margin-top: 10px;
+            color: #dbeafe;
+            line-height: 1.45;
         }
     </style>
 
     <div class="container mt-5">
         <div class="mb-4 text-center">
             <h1 class="h2 fw-bold text-white mb-1">Berichten</h1>
-            <p class="text-muted small">Chat over ticket #{{ $ticket->id }}</p>
+            <p class="text- small">Chat over ticket #{{ $ticket->id }}</p>
         </div>
 
         <div class="chat-container shadow-lg">
             <ul class="chat-list">
+
+                <!-- original issue description -->
+                <div class="ticket-description mb-3">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <span class="ticket-title">Ticket Description</span>
+                            <div class="ticket-subject">{{ $ticket->subject }}</div>
+                        </div>
+                        <div class="ticket-meta">
+                            {{ optional($ticket->created_at)->format('d-m-Y H:i') }}
+                        </div>
+                    </div>
+
+                    <div class="ticket-body">
+                        {!! nl2br(e($ticket->description)) !!}
+                    </div>
+                </div>
+
                 @foreach ($chats as $chat)
                     <li class="{{ auth()->id() === $chat->user_id ? 'text-end' : '' }}">
                         <div class="chat-message {{ auth()->id() === $chat->user_id ? 'own' : '' }}">

@@ -124,7 +124,7 @@
                                         </span>
                                     </td>
                                     <td class="text-white">{{ $ticket->category->name ?? '-' }}</td>
-                                    <td>{{ $ticket->subject }}</td>
+                                    <td class="text-white">{{ $ticket->subject }}</td>
                                     <td>
                                         <span class="badge badge-priority px-2 py-1">
                                             P{{ $ticket->priority->number ?? '-' }}

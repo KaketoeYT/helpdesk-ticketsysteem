@@ -110,6 +110,11 @@
                             </li>
                         @endif
                     @endauth
+                    @auth
+                        @if (auth()->user()->role === 'user')
+                            <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Mijn tickets</a></li>
+                        @endif
+                    @endauth
                 </ul>
                 <div class="navbar-nav">
                     @guest
