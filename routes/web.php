@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PriorityController;
@@ -92,5 +93,12 @@ Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('t
 Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
 Route::delete('/tickets/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');
 
+Route::get('/chats', [ChatController::class, 'index'])->name('chats.index');
+Route::get('/chats/create', [ChatController::class, 'create'])->name('chats.create');
+Route::post('/chats', [ChatController::class, 'store'])->name('chats.store');
+Route::get('/chats/{chat}', [ChatController::class  , 'show'])->name('chats.show');
+Route::get('/chats/{chat}/edit', [ChatController::class, 'edit'])->name('chats.edit');
+Route::put('/chats/{chat}', [ChatController::class, 'update'])->name('chats.update');
+Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chats.destroy');
 
 require __DIR__ . '/auth.php';
