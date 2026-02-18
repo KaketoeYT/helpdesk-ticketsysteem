@@ -84,6 +84,8 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
 Route::get('/userdashboard', [UserDashboardController::class, 'index'])->name('userdashboard.index');
 Route::get('/userdashboard/create', [UserDashboardController::class, 'create'])->name('userdashboard.create');
 Route::post('/userdashboard', [UserDashboardController::class, 'store'])->name('userdashboard.store');
+Route::get('/userdashboard/{ticket}', [UserDashboardController::class, 'show'])->name('userdashboard.show');
+Route::post('/userdashboard/{ticketId}/chat', [UserDashboardController::class, 'storeChat'])->name('userdashboard.storeChat');
 
 // Routes voor Tickets
 Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');

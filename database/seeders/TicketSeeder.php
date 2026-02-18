@@ -21,7 +21,7 @@ class TicketSeeder extends Seeder
                 'priority_id' => 1,
                 'category_id' => 1,
                 'location_id' => 2,
-                'user_id' => 13,
+                'user_id' => 11,
             ],
             [
                 'subject' => 'Page Not Loading',

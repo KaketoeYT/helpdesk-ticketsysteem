@@ -68,6 +68,16 @@
             color: #fca5a5;
             text-decoration: underline;
         }
+
+        .btn-view {
+            color: #34d399;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .btn-view:hover {
+            color: #6ee7b7;
+            text-decoration: underline;
+        }
     </style>
 
     <div class="container mt-5">
@@ -124,6 +134,7 @@
                                     <td class="text-white small">{{ $ticket->created_at }}</td>
                                     <td class="text-end">
                                         <div class="d-flex justify-content-end gap-3">
+                                            <a href="{{ route('userdashboard.show', $ticket->id) }}" class="btn-view">View Chat</a>
                                             <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn-edit">Edit</a>
 
                                             <form action="{{ route('tickets.destroy', $ticket->id) }}" method="POST"

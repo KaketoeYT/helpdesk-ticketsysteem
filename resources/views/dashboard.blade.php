@@ -20,9 +20,9 @@
                         <th>Status</th>
                         <th>Category</th>
                         <th>Onderwerp</th>
-                        <th>Priority</th>
                         <th>Location</th>
                         <th>Created At</th>
+                        <th>Acties</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,9 +33,11 @@
                             <!-- ?? '-' laat een '-' zien als de status van de ticket null is -->
                             <td>{{ $ticket->category->name ?? '-' }}</td>
                             <td>{{ $ticket->subject }}</td>
-                            <td>{{ $ticket->priority->number ?? '-' }}</td>
                             <td>{{ $ticket->location->name ?? '-' }}</td>
                             <td>{{ $ticket->created_at }}</td>
+                            <td>
+                                <a href="{{ route('userdashboard.show', $ticket->id) }}">Open chat</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
