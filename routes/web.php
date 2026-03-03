@@ -11,6 +11,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TicketAssignmentController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\WorkerDasboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -102,5 +103,9 @@ Route::get('/chats/{chat}', [ChatController::class  , 'show'])->name('chats.show
 Route::get('/chats/{chat}/edit', [ChatController::class, 'edit'])->name('chats.edit');
 Route::put('/chats/{chat}', [ChatController::class, 'update'])->name('chats.update');
 Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chats.destroy');
+
+// Routes voor Workers
+
+Route::get('/workerdashboard/take/{ticketId}', [WorkerDasboardController::class, 'take'])->name('workerdashboard.take');
 
 require __DIR__ . '/auth.php';
