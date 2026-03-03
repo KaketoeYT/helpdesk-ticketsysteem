@@ -134,6 +134,10 @@
                                     <td class="text-white small">{{ $ticket->created_at }}</td>
                                     <td class="text-end">
                                         <div class="d-flex justify-content-end gap-3">
+
+                                        @auth
+                                            @if (auth()->user()->role === 'admin')
+
                                             <a href="{{ route('userdashboard.show', $ticket->id) }}" class="btn-view">View Chat</a>
                                             <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn-edit">Edit</a>
 
@@ -146,6 +150,16 @@
                                                     Delete
                                                 </button>
                                             </form>
+
+                                            @endif
+
+                                            @if (auth()->user()->role === 'worker')
+
+                                            <a href="{{ route('workerdashboard.take', $ticket->id) }}" class="btn-view">Take Ticket</a>
+                                            <a href="{{ route('userdashboard.show', $ticket->id) }}" class="btn-view">View Chat</a>
+
+                                            @endif
+                                        @endauth
                                         </div>
                                     </td>
                                 </tr>
