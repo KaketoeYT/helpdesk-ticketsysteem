@@ -109,9 +109,8 @@
                             <li class="nav-item"><a class="nav-link" href="{{ route('locations.index') }}">Locations</a>
                             </li>
                         @endif
-                    @endauth
-                    @auth
-                        @if (auth()->user()->role === 'user')
+
+                        @if (auth()->user()->role === 'user' || auth()->user()->role === 'worker')
                             <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Mijn tickets</a></li>
                         @endif
                     @endauth
