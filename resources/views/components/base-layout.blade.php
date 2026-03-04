@@ -116,11 +116,13 @@
                     @endauth
                 </ul>
                 <div class="navbar-nav">
+                     <li class="nav-item"><a class="nav-link" href="{{ route('contact.index') }}">Contact</a></li>
                     @guest
                         <a href="{{ route('login') }}" class="nav-link">Login</a>
                     @else
                         <span class="nav-link text-white-50 small">Hello, {{ auth()->user()->name }}</span>
                         <form method="POST" action="{{ route('logout') }}" class="d-inline">
+
                             @csrf
                             <button type="submit" class="nav-link btn btn-link text-danger">Logout</button>
                         </form>
