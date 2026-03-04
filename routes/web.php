@@ -114,7 +114,6 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.index
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 // Routes voor Workers
-
 Route::get('/workerdashboard/take/{ticketId}', [WorkerDasboardController::class, 'take'])->name('workerdashboard.take');
 
 require __DIR__ . '/auth.php';
