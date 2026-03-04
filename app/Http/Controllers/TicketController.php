@@ -17,7 +17,7 @@ class TicketController extends Controller
      */
     public function index(Request $request)
     {
-        $user = auth()->user();
+        $user = auth()->user(); // geeft een melding, werkt priem, dus niet aanraken
         $showUnassigned = $request->get('unassigned', false);
         $categoryId = $request->get('category_id');
         $statusId = $request->get('status_id');
