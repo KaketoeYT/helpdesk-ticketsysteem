@@ -15,11 +15,47 @@ class TicketController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tickets = Ticket::with(['category', 'priority', 'location'])->get();
+        $user = auth()->user();
+        $showUnassigned = $request->get('unassigned', false);
+        $categoryId = $request->get('category_id');
+        $statusId = $request->get('status_id');
+        $priorityId = $request->get('priority_id');
+        $locationId = $request->get('location_id');
+        $query = Ticket::with(['category', 'priority', 'location', 'user']);
 
-        return view('tickets.index_test', compact('tickets'));
+        // Worker: altijd alleen unassigned tickets, geen toggle
+        if ($user && $user->role === 'worker') {
+            $query->whereDoesntHave('assignments');
+            $showUnassigned = true;
+        } else {
+            if ($showUnassigned) {
+                $query->whereDoesntHave('assignments');
+            }
+        }
+
+        // filters
+        if ($categoryId) {
+            $query->where('category_id', $categoryId);
+        }
+        if ($statusId) {
+            $query->where('status_id', $statusId);
+        }
+        if ($priorityId) {
+            $query->where('priority_id', $priorityId);
+        }
+        if ($locationId) {
+            $query->where('location_id', $locationId);
+        }
+
+        $tickets = $query->get();
+        $categories = Category::all();
+        $statuses = Status::all();
+        $priorities = Priority::all();
+        $locations = Location::all();
+        $hideUnassignedToggle = $user && $user->role === 'worker';
+        return view('tickets.index_test', compact('tickets', 'showUnassigned', 'categories', 'categoryId', 'statuses', 'statusId', 'priorities', 'priorityId', 'locations', 'locationId', 'hideUnassignedToggle'));
     }
 
     /**
