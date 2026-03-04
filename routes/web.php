@@ -108,8 +108,8 @@ Route::put('/chats/{chat}', [ChatController::class, 'update'])->name('chats.upda
 Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chats.destroy');
 
 // Routes voor Contact
-Route::get('/contact', [ContactController::class, 'index']);
-Route::post('/contact', [ContactController::class, 'send']);
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 // Routes voor Workers
 
