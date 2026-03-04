@@ -105,7 +105,6 @@ Route::put('/chats/{chat}', [ChatController::class, 'update'])->name('chats.upda
 Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chats.destroy');
 
 // Routes voor Workers
-
 Route::get('/workerdashboard/take/{ticketId}', [WorkerDasboardController::class, 'take'])->name('workerdashboard.take');
 
 require __DIR__ . '/auth.php';
