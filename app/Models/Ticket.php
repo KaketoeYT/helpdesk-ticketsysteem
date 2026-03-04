@@ -46,4 +46,9 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function assignments()
+    {
+        return $this->hasMany(TicketAssignment::class);
+    }
 }
