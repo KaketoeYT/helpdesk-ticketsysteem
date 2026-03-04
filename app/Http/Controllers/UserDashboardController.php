@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 
 class UserDashboardController extends Controller
 {
-    public function create(){
+    public function create()
+    {
         $priorities = Priority::all();
         $categories = Category::all();
         $locations = Location::all();
@@ -24,7 +25,7 @@ class UserDashboardController extends Controller
     public function store(TicketStoreRequest $request)
     {
         $defaultStatus = Status::where('is_default', true)->first();
-        
+
         $data = $request->validated();
 
         // Alleen zetten als er geen status is meegestuurd
@@ -36,13 +37,17 @@ class UserDashboardController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function show($ticketId){
+    public function show($ticketId)
+    {
         $ticket = Ticket::findOrFail($ticketId);
         $chats = Chat::with(['user', 'ticket'])->where('ticket_id', $ticketId)->get();
-        return view('userdashboard.show', compact('ticket', 'chats'));
+        $statuses = Status::all();
+        $priorities = Priority::all();
+        return view('userdashboard.show', compact('ticket', 'chats', 'statuses', 'priorities'));
     }
 
-    public function storeChat(Request $request, $ticketId){
+    public function storeChat(Request $request, $ticketId)
+    {
         $request->validate([
             'message' => 'required|string|max:1000',
         ]);
@@ -53,6 +58,26 @@ class UserDashboardController extends Controller
             'message' => $request->message,
         ]);
 
+        return redirect()->route('userdashboard.show', $ticketId);
+    }
+
+    public function updateStatus(Request $request, $ticketId)
+    {
+        $ticket = Ticket::findOrFail($ticketId);
+        $request->validate([
+            'status_id' => 'required|exists:statuses,id',
+        ]);
+        $ticket->update(['status_id' => $request->status_id]);
+        return redirect()->route('userdashboard.show', $ticketId);
+    }
+
+    public function updatePriority(Request $request, $ticketId)
+    {
+        $ticket = Ticket::findOrFail($ticketId);
+        $request->validate([
+            'priority_id' => 'required|exists:priorities,id',
+        ]);
+        $ticket->update(['priority_id' => $request->priority_id]);
         return redirect()->route('userdashboard.show', $ticketId);
     }
 }

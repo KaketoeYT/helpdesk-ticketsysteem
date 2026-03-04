@@ -80,8 +80,8 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::get('/ticket_assignment/{ticketAssignment}/edit', [TicketAssignmentController::class, 'edit'])->name('ticket_assignments.edit');
     Route::put('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'update'])->name('ticket_assignments.update');
     Route::delete('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'destroy'])->name('ticket_assignments.destroy');
-    });
-    
+});
+
 
 
 // User routes
@@ -90,6 +90,8 @@ Route::get('/userdashboard/create', [UserDashboardController::class, 'create'])-
 Route::post('/userdashboard', [UserDashboardController::class, 'store'])->name('userdashboard.store');
 Route::get('/userdashboard/{ticket}', [UserDashboardController::class, 'show'])->name('userdashboard.show');
 Route::post('/userdashboard/{ticketId}/chat', [UserDashboardController::class, 'storeChat'])->name('userdashboard.storeChat');
+Route::post('/userdashboard/{ticketId}/status', [UserDashboardController::class, 'updateStatus'])->name('userdashboard.updateStatus');
+Route::post('/userdashboard/{ticketId}/priority', [UserDashboardController::class, 'updatePriority'])->name('userdashboard.updatePriority');
 
 // Routes voor Tickets
 Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
@@ -102,7 +104,7 @@ Route::delete('/tickets/{id}', [TicketController::class, 'destroy'])->name('tick
 Route::get('/chats', [ChatController::class, 'index'])->name('chats.index');
 Route::get('/chats/create', [ChatController::class, 'create'])->name('chats.create');
 Route::post('/chats', [ChatController::class, 'store'])->name('chats.store');
-Route::get('/chats/{chat}', [ChatController::class  , 'show'])->name('chats.show');
+Route::get('/chats/{chat}', [ChatController::class, 'show'])->name('chats.show');
 Route::get('/chats/{chat}/edit', [ChatController::class, 'edit'])->name('chats.edit');
 Route::put('/chats/{chat}', [ChatController::class, 'update'])->name('chats.update');
 Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chats.destroy');
