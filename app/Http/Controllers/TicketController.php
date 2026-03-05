@@ -55,7 +55,7 @@ class TicketController extends Controller
         $priorities = Priority::all();
         $locations = Location::all();
         $hideUnassignedToggle = $user && $user->role === 'worker';
-        return view('tickets.index_test', compact('tickets', 'showUnassigned', 'categories', 'categoryId', 'statuses', 'statusId', 'priorities', 'priorityId', 'locations', 'locationId', 'hideUnassignedToggle'));
+        return view('tickets.index', compact('tickets', 'showUnassigned', 'categories', 'categoryId', 'statuses', 'statusId', 'priorities', 'priorityId', 'locations', 'locationId', 'hideUnassignedToggle'));
     }
 
     /**
@@ -103,7 +103,7 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        return view('tickets.edit_test', [
+        return view('tickets.edit', [
             'ticket' => $ticket,
             'categories' => Category::all(),
             'priorities' => Priority::all(),

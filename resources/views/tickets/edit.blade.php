@@ -23,13 +23,15 @@
             margin-bottom: 0.5rem;
         }
 
-        .form-control, .form-select {
+        .form-control,
+        .form-select {
             background-color: #0f172a;
             border: 1px solid #334155;
             color: #f1f5f9;
         }
 
-        .form-control:focus, .form-select:focus {
+        .form-control:focus,
+        .form-select:focus {
             background-color: #0f172a;
             border-color: #4f46e5;
             color: #fff;
@@ -60,10 +62,20 @@
     </style>
 
     <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center mb-4 max-width-800 mx-auto" style="max-width: 800px;">
+        {{-- Validation errors --}}
+        @if ($errors->any())
+            <ul style="color: red;">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+
+        <div class="d-flex justify-content-between align-items-center mb-4 max-width-800 mx-auto"
+            style="max-width: 800px;">
             <div>
                 <h1 class="h2 fw-bold text-white mb-1">Ticket bewerken</h1>
-                <p class="text-secondary small">Pas de details van ticket #{{ $ticket->id }} aan</p>
+                <p class="text-white small">Pas de details van ticket #{{ $ticket->id }} aan</p>
             </div>
             <a href="{{ route('tickets.index') }}" class="btn-back">
                 &larr; Terug naar overzicht
@@ -78,8 +90,8 @@
                 <div class="row g-3">
                     <div class="col-12">
                         <label for="subject" class="form-label">Onderwerp</label>
-                        <input type="text" name="subject" id="subject" class="form-control" 
-                               value="{{ old('subject', $ticket->subject) }}" required>
+                        <input type="text" name="subject" id="subject" class="form-control"
+                            value="{{ old('subject', $ticket->subject) }}" required>
                     </div>
 
                     <div class="col-md-6">
@@ -106,11 +118,6 @@
                         </select>
                     </div>
 
-                    <div class="col-12">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea name="description" id="description" class="form-control" rows="5" required>{{ old('description', $ticket->description) }}</textarea>
-                    </div>
-
                     <div class="col-md-6">
                         <label for="location" class="form-label">Location</label>
                         <select name="location" id="location" class="form-select" required>
@@ -133,6 +140,11 @@
                                 </option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="description" id="description" class="form-control" rows="5" required>{{ old('description', $ticket->description) }}</textarea>
                     </div>
 
                     <div class="col-12 mt-4">
