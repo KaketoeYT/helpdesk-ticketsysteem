@@ -82,6 +82,12 @@
             /* Zorgt dat de kleur niet vervaagd wordt */
         }
 
+        .form-control::placeholder {
+            font-size: 0.85em;
+            color: #94a3b8;
+            opacity: 0.7;
+        }
+
         /* Voor Firefox */
         .form-control:-moz-placeholder {
             color: #f1f5f9 !important;

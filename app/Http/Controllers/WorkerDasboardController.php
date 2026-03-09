@@ -23,6 +23,6 @@ class WorkerDasboardController extends Controller
             'user_id' => auth()->id(),
         ]);
 
-        return redirect()->route('tickets.index')->with('success', 'Ticket succesvol toegewezen aan jou.');
+        return redirect()->route('dashboard')->with('success', 'Ticket succesvol toegewezen aan jou.');
     }
 }

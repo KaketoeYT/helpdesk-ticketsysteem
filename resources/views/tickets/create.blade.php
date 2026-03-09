@@ -25,13 +25,15 @@
         }
 
         /* Input & Select styling */
-        .form-control, .form-select {
+        .form-control,
+        .form-select {
             background-color: #0f172a !important;
             border: 1px solid #334155 !important;
             color: #f1f5f9 !important;
         }
 
-        .form-control:focus, .form-select:focus {
+        .form-control:focus,
+        .form-select:focus {
             background-color: #0f172a;
             border-color: #4f46e5 !important;
             box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25);
@@ -39,9 +41,11 @@
         }
 
         /* Witte Placeholders */
-        .form-control::placeholder {
-            color: #ffffff !important;
-            opacity: 0.8;
+        .form-control::placeholder,
+        .form-control-dark::placeholder {
+            font-size: 0.85em;
+            color: #f8fafc;
+            opacity: 0.7;
         }
 
         /* Select arrow kleur */
@@ -75,7 +79,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                
+
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                         <h1 class="h2 fw-bold text-white mb-1">Ticket Aanmaken</h1>
@@ -88,7 +92,8 @@
 
                 {{-- Validation errors --}}
                 @if ($errors->any())
-                    <div class="alert alert-danger border-0 mb-4" style="background-color: rgba(239, 68, 68, 0.1); color: #f87171;">
+                    <div class="alert alert-danger border-0 mb-4"
+                        style="background-color: rgba(239, 68, 68, 0.1); color: #f87171;">
                         <ul class="mb-0 small fw-medium">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -105,8 +110,9 @@
                             {{-- Subject --}}
                             <div class="col-12 mb-4">
                                 <label for="subject" class="form-label">Onderwerp</label>
-                                <input type="text" id="subject" name="subject" class="form-control form-control-lg" 
-                                       placeholder="Typ hier het onderwerp van de ticket..." value="{{ old('subject') }}" required>
+                                <input type="text" id="subject" name="subject" class="form-control form-control-lg"
+                                    placeholder="Typ hier het onderwerp van de ticket..." value="{{ old('subject') }}"
+                                    required>
                             </div>
 
                             {{-- Category & Priority --}}
@@ -115,7 +121,8 @@
                                 <select name="category_id" id="category_id" class="form-select" required>
                                     <option value="" disabled selected>-- kies categorie --</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                        <option value="{{ $category->id }}"
+                                            {{ old('category_id') == $category->id ? 'selected' : '' }}>
                                             {{ $category->name }}
                                         </option>
                                     @endforeach
@@ -127,7 +134,8 @@
                                 <select name="priority_id" id="priority_id" class="form-select" required>
                                     <option value="" disabled selected>-- kies prioriteit --</option>
                                     @foreach ($priorities as $priority)
-                                        <option value="{{ $priority->id }}" {{ old('priority_id') == $priority->id ? 'selected' : '' }}>
+                                        <option value="{{ $priority->id }}"
+                                            {{ old('priority_id') == $priority->id ? 'selected' : '' }}>
                                             Prioriteit {{ $priority->number }}
                                         </option>
                                     @endforeach
@@ -140,7 +148,8 @@
                                 <select name="location_id" id="location_id" class="form-select" required>
                                     <option value="" disabled selected>-- kies locatie --</option>
                                     @foreach ($locations as $location)
-                                        <option value="{{ $location->id }}" {{ old('location_id') == $location->id ? 'selected' : '' }}>
+                                        <option value="{{ $location->id }}"
+                                            {{ old('location_id') == $location->id ? 'selected' : '' }}>
                                             {{ $location->name }}
                                         </option>
                                     @endforeach
@@ -152,7 +161,8 @@
                                 <select name="status_id" id="status_id" class="form-select" required>
                                     <option value="" disabled selected>-- kies status --</option>
                                     @foreach ($statuses as $status)
-                                        <option value="{{ $status->id }}" {{ old('status_id') == $status->id ? 'selected' : '' }}>
+                                        <option value="{{ $status->id }}"
+                                            {{ old('status_id') == $status->id ? 'selected' : '' }}>
                                             {{ $status->name }}
                                         </option>
                                     @endforeach
@@ -162,8 +172,8 @@
                             {{-- Description --}}
                             <div class="col-12 mb-4">
                                 <label for="description" class="form-label">Beschrijving</label>
-                                <textarea name="description" id="description" class="form-control" rows="5" 
-                                          placeholder="Typ hier de volledige beschrijving..." required>{{ old('description') }}</textarea>
+                                <textarea name="description" id="description" class="form-control" rows="5"
+                                    placeholder="Typ hier de volledige beschrijving..." required>{{ old('description') }}</textarea>
                             </div>
 
                             {{-- Submit --}}

@@ -30,6 +30,13 @@
             color: #f1f5f9;
         }
 
+        .form-control::placeholder,
+        .form-control-dark::placeholder {
+            font-size: 0.85em;
+            color: #f8fafc;
+            opacity: 0.7;
+        }
+
         .form-control:focus,
         .form-select:focus {
             background-color: #0f172a;
