@@ -17,12 +17,14 @@ return new class extends Migration
             $table->string('subject');
             $table->text('description');
             
-            
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('priority_id');
             $table->foreignId('location_id');
             $table->foreignId('status_id')->default(1);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+
+            $table->timestamp('closed_at')->nullable();
+
             $table->timestamps();
         });
     }

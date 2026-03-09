@@ -132,10 +132,10 @@
 
                     <div class="col-md-6">
                         <label for="status" class="form-label">Status</label>
-                        <select name="status" id="status" class="form-select" required>
+                        <select name="status_id" id="status" class="form-select" required>
                             @foreach ($statuses as $status)
                                 <option value="{{ $status->id }}"
-                                    {{ old('status', $ticket->status_id) == $status->id ? 'selected' : '' }}>
+                                    {{ old('status_id', $ticket->status_id) == $status->id ? 'selected' : '' }}>
                                     {{ $status->name }}
                                 </option>
                             @endforeach
@@ -151,7 +151,7 @@
                         <hr class="border-secondary mb-4">
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">
-                                Update Ticket Opslaan
+                                Ticket Opslaan
                             </button>
                         </div>
                     </div>
@@ -160,3 +160,4 @@
         </div>
     </div>
 </x-base-layout>
+

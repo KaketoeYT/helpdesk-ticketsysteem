@@ -42,6 +42,7 @@ class TicketStoreRequest extends FormRequest
                 'location_id'  => 'required|exists:locations,id',
                 'status_id'    => 'exists:statuses,id',
                 'user_id'      => 'required|exists:users,id',
+                'closed_at'    => 'nullable|date',
             ];
         }
 
@@ -54,6 +55,7 @@ class TicketStoreRequest extends FormRequest
             'location_id'  => 'sometimes|exists:locations,id',
             'status_id'    => 'sometimes|exists:statuses,id',
             'user_id'      => 'sometimes|exists:users,id',
+            'closed_at'    => 'nullable|date',
         ];
     }
 }

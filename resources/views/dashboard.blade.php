@@ -25,19 +25,17 @@
                     <table border="1" cellpadding="8" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Status</th>
                                 <th>Category</th>
                                 <th>Onderwerp</th>
                                 <th>Location</th>
-                                <th>Created At</th>
+                                <th>Gemaakt Op</th>
                                 <th>Acties</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($tickets as $ticket)
                                 <tr>
-                                    <td>{{ $ticket->id }}</td>
                                     <td>{{ $ticket->status->name ?? '-' }}</td>
                                     <!-- ?? '-' laat een '-' zien als de status van de ticket null is -->
                                     <td>{{ $ticket->category->name ?? '-' }}</td>
@@ -59,7 +57,6 @@
                 @if (auth()->user()->assignments->isEmpty())
                     <p>U heeft nog geen toegewezen tickets.</p>
                 @else
-
                     <table border="1" cellpadding="8" cellspacing="0">
                         <thead>
                             <tr>

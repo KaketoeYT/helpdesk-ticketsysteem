@@ -14,8 +14,7 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\WorkerDasboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
-
-
+use App\Http\Controllers\overviewController;
 
 Route::get('/', function () {
     return view('home');
@@ -80,6 +79,9 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::get('/ticket_assignment/{ticketAssignment}/edit', [TicketAssignmentController::class, 'edit'])->name('ticket_assignments.edit');
     Route::put('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'update'])->name('ticket_assignments.update');
     Route::delete('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'destroy'])->name('ticket_assignments.destroy');
+
+    // Admin overzicht
+    Route::get('/overview', [OverviewController::class, 'index'])->name('overview.index');
 });
 
 

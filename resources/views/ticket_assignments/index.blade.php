@@ -11,7 +11,6 @@
                     <tr>
                         <th>ID</th>
                         <th>User</th>
-                        <th>Ticket</th>
                         <th>Category</th>
                         <th>Priority</th>
                         <th>Location</th>
@@ -26,18 +25,18 @@
                             <td>{{ $ticketAssignment->user->name }}</td>
                             <td>{{ $ticketAssignment->ticket->subject }}</td>
                             <!-- ?? '-' laat een '-' zien als de status van de ticket null is -->
-                            <td>{{ $ticketAssignment->category->name ?? '-' }}</td>
                             <td>{{ $ticketAssignment->ticket->priority->number ?? '-' }}</td>
                             <td>{{ $ticketAssignment->ticket->location->name ?? '-' }}</td>
                             <td>{{ $ticketAssignment->ticket->created_at ?? '-' }}</td>
                             <td>
                                 <!-- Actions buttons -->
                                 <!-- Edit -->
-                                <button><a href="{{ route('ticket_assignments.edit', $ticketAssignment->id) }}">Edit</a></button>
+                                <button><a
+                                        href="{{ route('ticket_assignments.edit', $ticketAssignment->id) }}">Edit</a></button>
 
                                 <!-- Destroy -->
-                                <form action="{{ route('ticket_assignments.destroy', $ticketAssignment->id) }}" method="POST"
-                                    style="display:inline;">
+                                <form action="{{ route('ticket_assignments.destroy', $ticketAssignment->id) }}"
+                                    method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" onclick="return confirm('Weet je het zeker?')">Delete</button>
@@ -50,3 +49,4 @@
         @endif
     </div>
 </x-base-layout>
+

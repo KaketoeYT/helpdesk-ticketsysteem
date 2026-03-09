@@ -22,6 +22,8 @@ class TicketSeeder extends Seeder
                 'category_id' => 1,
                 'location_id' => 2,
                 'user_id' => 11,
+                'created_at' => now(),
+                'closed_at' => null,
             ],
             [
                 'subject' => 'Page Not Loading',
@@ -31,6 +33,9 @@ class TicketSeeder extends Seeder
                 'category_id' => 2,
                 'location_id' => 2,
                 'user_id' => 1,
+                'created_at' => now(),
+                'closed_at' => null,
+
             ],
             [
                 'subject' => 'Feature Request',
@@ -40,6 +45,8 @@ class TicketSeeder extends Seeder
                 'category_id' => 3,
                 'location_id' => 1,
                 'user_id' => 2,
+                'created_at' => now(),
+                'closed_at' => now()->addDays(1),
             ],
         ];
         DB::table('tickets')->insert($tickets);

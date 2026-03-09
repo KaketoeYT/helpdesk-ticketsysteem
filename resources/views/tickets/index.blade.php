@@ -102,7 +102,7 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
                 <h1 class="h2 fw-bold text-white mb-1">Tickets Overzicht</h1>
-                <p class="text-white small">Beheer en bekijk alle actieve tickets</p>
+                <p class="text-white small">Beheer en bekijk alle tickets</p>
             </div>
             <a href="{{ route('tickets.create') }}" class="btn btn-primary px-4 py-2 shadow-sm"
                 style="background-color: #4f46e5; border: none;">
@@ -219,6 +219,7 @@
                                 <th>Priority</th>
                                 <th>Location</th>
                                 <th>Created</th>
+                                <th>Closed</th>
                                 <th class="text-end">Acties</th>
                             </tr>
                         </thead>
@@ -240,7 +241,8 @@
                                         </span>
                                     </td>
                                     <td class="text-white small">{{ $ticket->location->name ?? '-' }}</td>
-                                    <td class="text-white small">{{ $ticket->created_at }}</td>
+                                    <td class="text-white small">{{ $ticket->created_at ?? '-' }}</td>
+                                    <td class="text-white small">{{ $ticket->closed_at ?? '-' }}</td>
                                     <td class="text-end">
                                         <div class="d-flex justify-content-end gap-3">
 
