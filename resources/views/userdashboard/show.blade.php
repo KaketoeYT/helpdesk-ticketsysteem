@@ -198,15 +198,17 @@
 
         @auth
             @if (auth()->user()->role === 'admin' || auth()->user()->role === 'worker')
-                <div class="chat-container shadow-lg">
+                <div class="chat-container shadow-lg mt-4">
                     <div class="mb-4 text-center">
                         <h1 class="h2 fw-bold text-white mb-1">Chat control</h1>
+                        <p class="text-muted small">Beheer de status en prioriteit van dit ticket</p>
                     </div>
-                    <div class="d-flex gap-2 mt-3 align-items-center">
-                        <!-- Status Update Button -->
-                        <div class="d-flex gap-2" style="flex: 1;">
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="status_id" class="form-label text-white-50 small fw-bold">TICKET STATUS</label>
                             <select name="status_id" id="status_id" class="form-select form-select-sm"
-                                style="background-color: #0f172a; border: 1px solid #334155; color: #f8fafc; flex: 1;">
+                                style="background-color: #0f172a; border: 1px solid #334155; color: #f8fafc;">
                                 <option value="">Verander Status</option>
                                 @foreach ($statuses as $status)
                                     <option value="{{ $status->id }}"
@@ -217,10 +219,10 @@
                             </select>
                         </div>
 
-                        <!-- Priority Update Button -->
-                        <div class="d-flex gap-2" style="flex: 1;">
+                        <div class="col-md-6">
+                            <label for="priority_id" class="form-label text-white-50 small fw-bold">PRIORITEIT</label>
                             <select name="priority_id" id="priority_id" class="form-select form-select-sm"
-                                style="background-color: #0f172a; border: 1px solid #334155; color: #f8fafc; flex: 1;">
+                                style="background-color: #0f172a; border: 1px solid #334155; color: #f8fafc;">
                                 <option value="">Verander Priority</option>
                                 @foreach ($priorities as $priority)
                                     <option value="{{ $priority->id }}"
@@ -230,20 +232,19 @@
                                 @endforeach
                             </select>
                         </div>
-
-                        <!-- Hidden forms for status and priority updates -->
-                        <form id="statusForm" action="{{ route('userdashboard.updateStatus', $ticket->id) }}"
-                            method="POST" style="display: none;">
-                            @csrf
-                            <input type="hidden" name="status_id" id="statusValue">
-                        </form>
-
-                        <form id="priorityForm" action="{{ route('userdashboard.updatePriority', $ticket->id) }}"
-                            method="POST" style="display: none;">
-                            @csrf
-                            <input type="hidden" name="priority_id" id="priorityValue">
-                        </form>
                     </div>
+
+                    <form id="statusForm" action="{{ route('userdashboard.updateStatus', $ticket->id) }}" method="POST"
+                        style="display: none;">
+                        @csrf
+                        <input type="hidden" name="status_id" id="statusValue">
+                    </form>
+
+                    <form id="priorityForm" action="{{ route('userdashboard.updatePriority', $ticket->id) }}"
+                        method="POST" style="display: none;">
+                        @csrf
+                        <input type="hidden" name="priority_id" id="priorityValue">
+                    </form>
                 </div>
             @endif
         @endauth
