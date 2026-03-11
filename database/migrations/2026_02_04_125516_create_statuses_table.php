@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('name');
             $table->boolean('is_default')->default(false);
-
+            $table->string('color')->default('#000000');
             $table->timestamps();
         });
     }

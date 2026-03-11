@@ -27,6 +27,10 @@
                 </label>
             </div>
 
+            <div>
+                <label for="color">Kleur:</label>
+                <input type="color" id="color" name="color" value="{{ old('color') }}" required>
+            </div>
             <button type="submit">Status Aanmaken</button>
         </form>
     </div>
