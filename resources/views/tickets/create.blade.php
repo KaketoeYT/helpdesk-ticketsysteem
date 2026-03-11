@@ -1,81 +1,6 @@
 <x-base-layout>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        /* Dark Mode Basis */
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-        }
-
-        .ticket-card {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 30px;
-        }
-
-        /* Form Labels styling */
-        .form-label {
-            color: #94a3b8;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-        }
-
-        /* Input & Select styling */
-        .form-control,
-        .form-select {
-            background-color: #0f172a !important;
-            border: 1px solid #334155 !important;
-            color: #f1f5f9 !important;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            background-color: #0f172a;
-            border-color: #4f46e5 !important;
-            box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25);
-            color: #fff;
-        }
-
-        /* Witte Placeholders */
-        .form-control::placeholder,
-        .form-control-dark::placeholder {
-            font-size: 0.85em;
-            color: #f8fafc;
-            opacity: 0.7;
-        }
-
-        /* Select arrow kleur */
-        .form-select {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
-        }
-
-        /* Button styling */
-        .btn-submit {
-            background-color: #4f46e5;
-            border: none;
-            padding: 10px 24px;
-            font-weight: 600;
-        }
-
-        .btn-submit:hover {
-            background-color: #4338ca;
-        }
-
-        .btn-back {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .btn-back:hover {
-            color: #f8fafc;
-        }
-    </style>
-
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -190,3 +115,4 @@
         </div>
     </div>
 </x-base-layout>
+

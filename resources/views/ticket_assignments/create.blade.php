@@ -1,13 +1,5 @@
     <x-base-layout>
 
-        <style>
-            .form-control::placeholder {
-                font-size: 0.85em;
-                color: #94a3b8;
-                opacity: 0.7;
-            }
-        </style>
-
         <h1 class="text-2xl font-bold mb-4">Create Ticket Assignment</h1>
 
         <form action="{{ route('ticket_assignments.store') }}" method="POST" class="space-y-4">

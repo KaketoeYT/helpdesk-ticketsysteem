@@ -1,13 +1,5 @@
 <x-base-layout>
 
-    <style>
-        .form-control::placeholder {
-            font-size: 0.85em;
-            color: #94a3b8;
-            opacity: 0.7;
-        }
-    </style>
-
     <div>
         <h1>Prioriteit Bewerken</h1>
         <button><a href="{{ route('priorities.index') }}">Terug</a></button>
@@ -25,3 +17,4 @@
         </form>
 
 </x-base-layout>
+
