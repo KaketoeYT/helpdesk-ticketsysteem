@@ -15,6 +15,7 @@ class Ticket extends Model
         'location_id',
         'status_id',
         'user_id',
+        'closed_at',
     ];
     
     public function chats()
