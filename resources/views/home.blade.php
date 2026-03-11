@@ -1,83 +1,4 @@
 <x-base-layout>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        /* Dark Mode Custom Overrides */
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-        }
-
-        .hero-card {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 1px solid #334155;
-            border-radius: 16px;
-            padding: 40px;
-        }
-
-        .stat-card {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 24px;
-            transition: transform 0.2s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: #4f46e5;
-        }
-
-        .icon-box {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
-
-        .bg-indigo-soft {
-            background: rgba(79, 70, 229, 0.1);
-            color: #818cf8;
-        }
-
-        .bg-emerald-soft {
-            background: rgba(52, 211, 153, 0.1);
-            color: #34d399;
-        }
-
-        .bg-amber-soft {
-            background: rgba(245, 158, 11, 0.1);
-            color: #fbbf24;
-        }
-
-        .btn-primary-custom {
-            background-color: #4f46e5;
-            border: none;
-            padding: 12px 24px;
-            font-weight: 600;
-            border-radius: 8px;
-        }
-
-        .btn-primary-custom:hover {
-            background-color: #4338ca;
-        }
-
-        .btn-outline-custom {
-            border: 1px solid #334155;
-            color: #f8fafc;
-            padding: 12px 24px;
-            font-weight: 600;
-            border-radius: 8px;
-        }
-
-        .btn-outline-custom:hover {
-            background-color: #1e293b;
-            color: #ffffff;
-        }
-    </style>
 
     <div class="container mt-5">
         <div class="hero-card shadow-lg mb-5">
@@ -161,13 +82,5 @@
                 </div>
             </div>
         </div>
-
-        @auth
-            <div class="text-center py-4 border-top border-secondary opacity-50">
-                <p class="small">Ingelogd als: <span class="text-white">{{ auth()->user()->name }}</span>
-                    ({{ auth()->user()->role }})
-                </p>
-            </div>
-        @endauth
     </div>
 </x-base-layout>

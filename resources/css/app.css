@@ -62,7 +62,32 @@
     }
 }
 
-/* Custom scrollbar */
+/* ==========================================================================
+   1. Basis & Global Overrides
+   ========================================================================== */
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+}
+
+/* Algemene Placeholder Styling */
+.form-control::placeholder,
+.form-control-dark::placeholder,
+.form-select::placeholder {
+    font-size: 0.85em;
+    color: #94a3b8;
+    opacity: 0.7;
+}
+
+/* Voor specifieke witte placeholders indien nodig */
+.textwhite::placeholder {
+    color: #f1f5f9 !important;
+    opacity: 1;
+}
+
+/* ==========================================================================
+   2. Layout Componenten (Scrollbar, Navbar, Sidebar)
+   ========================================================================== */
 .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
 }
@@ -76,26 +101,97 @@
     border-radius: 3px;
 }
 
-/* Sidebar width transitions */
-.sidebar-transition {
-    transition:
-        width 0.3s ease,
-        transform 0.3s ease,
-        margin-left 0.3s ease,
-        display 0.3s ease;
+.navbar-custom {
+    background-color: #1e293b;
+    border-bottom: 1px solid #334155;
+    padding: 0.75rem 1rem;
 }
 
-.content-transition {
-    transition:
-        margin-left 0.3s ease,
-        width 0.3s ease;
+.navbar-brand {
+    font-weight: 700;
+    color: #818cf8 !important;
 }
 
-/* Custom file input */
-.custom-file-input::-webkit-file-upload-button {
-    visibility: hidden;
+.nav-link {
+    color: #94a3b8 !important;
+    font-weight: 500;
+    transition: color 0.2s;
 }
 
+.nav-link:hover {
+    color: #f1f5f9 !important;
+}
+
+.nav-link.active {
+    color: #4f46e5 !important;
+}
+
+.sidebar-transition, .content-transition {
+    transition: width 0.3s ease, transform 0.3s ease, margin-left 0.3s ease, display 0.3s ease;
+}
+
+/* ==========================================================================
+   3. Kaarten & Containers
+   ========================================================================== */
+.ticket-card, .stat-card, .chat-container {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.ticket-card {
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px; /* Iets meer padding voor ticket details */
+}
+
+.contact-card, .hero-card {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 40px;
+}
+
+.stat-card {
+    transition: transform 0.2s ease;
+    padding: 24px;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #4f46e5;
+}
+
+/* ==========================================================================
+   4. Formulieren & Inputs
+   ========================================================================== */
+.form-label {
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.form-control, .form-select, .form-control-dark {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    color: #f1f5f9 !important;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.form-control:focus, .form-select:focus, .form-control-dark:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25);
+    outline: none;
+    color: #fff;
+}
+
+/* Custom File Input */
+.custom-file-input::-webkit-file-upload-button { visibility: hidden; }
 .custom-file-input::before {
     content: "Select files";
     display: inline-block;
@@ -103,8 +199,6 @@
     border: 1px solid #d1d5db;
     border-radius: 0.375rem;
     padding: 0.375rem 0.75rem;
-    outline: none;
-    white-space: nowrap;
     cursor: pointer;
     font-size: 0.875rem;
     font-weight: 500;
@@ -117,14 +211,108 @@
     color: #e5e7eb;
 }
 
-.custom-file-input:hover::before {
-    border-color: #9ca3af;
+/* ==========================================================================
+   5. Tabellen & Badges
+   ========================================================================== */
+.table {
+    --bs-table-bg: #1e293b;
+    --bs-table-color: #f1f5f9;
+    --bs-table-border-color: #334155;
+    --bs-table-hover-bg: #2d3748;
 }
 
-.custom-file-input:active::before {
-    background: #e5e7eb;
+.table thead th {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.dark .custom-file-input:active::before {
-    background: #4b5563;
+.badge-status {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.5);
 }
+
+.badge-priority {
+    background: rgba(245, 158, 11, 0.1);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+/* ==========================================================================
+    6. Knoppen
+========================================================================== */
+.btn-primary-custom, .btn-submit, .btn-send, .btn-primary {
+    background-color: #4f46e5;
+    border: none;
+    padding: 12px 24px;
+    font-weight: 600;
+    border-radius: 8px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover, .btn-submit:hover, .btn-send:hover, .btn-primary:hover {
+    background-color: #4338ca;
+    transform: translateY(-2px);
+}
+
+.btn-view { color: #81f8a5; text-decoration: none; font-weight: 500; }
+.btn-edit { color: #818cf8; text-decoration: none; font-weight: 500; }
+.btn-delete-link { background: none; border: none; color: #f87171; font-weight: 500; }
+.btn-back { color: #94a3b8; text-decoration: none; transition: 0.2s; }
+.btn-back:hover { color: #fff; }
+
+/* ==========================================================================
+    7. Chat & Ticket Details
+========================================================================== */
+.chat-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.chat-message {
+    background-color: #334155;
+    padding: 12px 16px;
+    border-radius: 12px;
+    max-width: 85%;
+}
+
+.chat-message.own {
+    background-color: #4f46e5;
+    margin-left: auto;
+}
+
+.ticket-description {
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.12), rgba(17, 24, 39, 0.06));
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    padding: 16px;
+    border-radius: 10px;
+}
+
+/* ==========================================================================
+    8. Footer & Misc
+========================================================================== */
+footer {
+    border-top: 1px solid #334155;
+    color: #64748b;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.icon-box {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+}
+
+.bg-indigo-soft { background: rgba(79, 70, 229, 0.1); color: #818cf8; }
+.bg-emerald-soft { background: rgba(52, 211, 153, 0.1); color: #34d399; }
