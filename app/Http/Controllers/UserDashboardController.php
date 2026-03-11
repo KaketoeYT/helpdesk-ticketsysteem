@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TicketStoreRequest;
+use App\Mail\ChatClosedMail;
+use App\Mail\TicketCreatedMail;
+use App\Mail\TicketInProgressMail;
 use App\Models\Category;
 use App\Models\Chat;
 use App\Models\Location;
@@ -10,6 +13,7 @@ use App\Models\Priority;
 use App\Models\Status;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserDashboardController extends Controller
 {
@@ -33,7 +37,11 @@ class UserDashboardController extends Controller
             $data['status_id'] = $defaultStatus?->id;
         }
 
-        Ticket::create($data);
+        $ticket = Ticket::create($data);
+
+        // Bevestiging naar gebruiker dat het ticket is aangemaakt
+        Mail::to($ticket->user->email)->send(new TicketCreatedMail($ticket));
+
         return redirect()->route('dashboard');
     }
 
@@ -67,7 +75,25 @@ class UserDashboardController extends Controller
         $request->validate([
             'status_id' => 'required|exists:statuses,id',
         ]);
-        $ticket->update(['status_id' => $request->status_id]);
+
+        // Check if status is being changed to "Afgehandeld" (ID: 3)
+        if ($request->status_id == 3) {
+            $ticket->update([
+                'status_id' => $request->status_id,
+                'closed_at' => now(),
+            ]);
+
+            // Send closed confirmation to user
+            Mail::to($ticket->user->email)->send(new ChatClosedMail($ticket));
+        } elseif ($request->status_id == 2) {
+            // In behandeling
+            $ticket->update(['status_id' => $request->status_id]);
+
+            Mail::to($ticket->user->email)->send(new TicketInProgressMail($ticket));
+        } else {
+            $ticket->update(['status_id' => $request->status_id]);
+        }
+
         return redirect()->route('userdashboard.show', $ticketId);
     }
 

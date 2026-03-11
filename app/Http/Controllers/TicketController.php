@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TicketStoreRequest;
+use App\Mail\TicketCreatedMail;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Priority;
 use App\Models\Status;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class TicketController extends Controller
 {
@@ -86,7 +88,13 @@ class TicketController extends Controller
             $data['status_id'] = $defaultStatus?->id;
         }
 
-        Ticket::create($data);
+        $ticket = Ticket::create($data);
+
+        // Bevestiging naar de ticket-maker
+        if ($ticket->user) {
+            Mail::to($ticket->user->email)->send(new TicketCreatedMail($ticket));
+        }
+
         return redirect()->route('tickets.index');
     }
 
