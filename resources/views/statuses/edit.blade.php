@@ -19,7 +19,10 @@
                         {{ old('is_default', $status->is_default) ? 'checked' : '' }}>
                 </label>
             </div>
-
+            <div>
+                <label for="color">Kleur:</label>
+                <input type="color" id="color" name="color" value="{{ old('color', $status->color) }}" required>
+            </div>
             <button type="submit">Status Bijwerken</button>
         </form>
     </div>

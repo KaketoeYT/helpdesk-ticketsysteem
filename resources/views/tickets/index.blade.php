@@ -131,7 +131,7 @@
                                     <td class="text-white font-monospace">#{{ $ticket->id }}</td>
                                     <td class="fw-semibold text-white">{{ $ticket->user->name }}</td>
                                     <td>
-                                        <span class="badge badge-status px-2 py-1">
+                                        <span class="badge badge-status px-2 py-1" style="background-color: {{ $ticket->status->color ?? '#3b82f6' }}; color: #fff; border: 1px solid rgba(255,255,255,.2);">
                                             {{ $ticket->status->name ?? 'N/A' }}
                                         </span>
                                     </td>

@@ -12,6 +12,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Naam</th>
+                        <th>Kleur</th>
                         <th>Standaard?</th>
                         <th>Created at</th>
                         <th>Acties</th>
@@ -22,6 +23,7 @@
                         <tr>
                             <td>{{ $status->id }}</td>
                             <td>{{ $status->name }}</td>
+                            <td><span style="display:inline-block;width:20px;height:20px;border:1px solid #000; background:{{ $status->color ?? '#000000' }}"></span>&nbsp;{{ $status->color ?? '#000000' }}</td>
                             <td>{{ $status->is_default ? 'Ja' : 'Nee' }}</td>
                             <td>{{ $status->created_at }}</td>
                             <td>

@@ -9,6 +9,7 @@ class Status extends Model
     protected $fillable = [
         'name',
         'is_default',
+        'color',
     ];
 
     // zorg ervoor dat er maar 1 status de standaard kan zijn
