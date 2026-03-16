@@ -38,6 +38,9 @@
                             </li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('overview.index') }}">Overview</a></li>
                         @endif
+                        @if (auth()->user()->role === 'worker')
+                            <li class="nav-item"><a class="nav-link" href="{{ route('tickets.index') }}">Tickets</a></li>
+                        @endif
 
                         <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Mijn tickets</a></li>
                     @endauth
