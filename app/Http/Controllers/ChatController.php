@@ -64,7 +64,7 @@ class ChatController extends Controller
     public function update(ChatStoreRequest $request, Chat $chat)
     {
         $chat->update($request->validated());
-        return redirect()->route('chats.index')->with('success', 'Chat updated successfully.');
+        return redirect()->route('chats.index');
     }
 
     /**
@@ -73,6 +73,6 @@ class ChatController extends Controller
     public function destroy(Chat $chat)
     {
         $chat->delete();
-        return redirect()->route('chats.index')->with('success', 'Chat deleted successfully.');
+        return redirect()->route('chats.index');
     }
 }

@@ -80,48 +80,47 @@ Route::middleware(['auth', 'admin:admin'])->group(function () {
     Route::put('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'update'])->name('ticket_assignments.update');
     Route::delete('/ticket_assignment/{ticketAssignment}', [TicketAssignmentController::class, 'destroy'])->name('ticket_assignments.destroy');
 
+    // Routes voor tickets
+    Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
+    Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
+    Route::delete('/tickets/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');
+
+    // Routes voor chats
+    Route::get('/chats/{chat}', [ChatController::class, 'show'])->name('chats.show');
+    Route::get('/chats/{chat}/edit', [ChatController::class, 'edit'])->name('chats.edit');
+    Route::put('/chats/{chat}', [ChatController::class, 'update'])->name('chats.update');
+    Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chats.destroy');
+
     // Admin overzicht
     Route::get('/overview', [OverviewController::class, 'index'])->name('overview.index');
 });
 
-
-
-// User routes
-Route::get('/userdashboard', [UserDashboardController::class, 'index'])->name('userdashboard.index');
-Route::get('/userdashboard/create', [UserDashboardController::class, 'create'])->name('userdashboard.create');
-Route::post('/userdashboard', [UserDashboardController::class, 'store'])->name('userdashboard.store');
-Route::get('/userdashboard/{ticket}', [UserDashboardController::class, 'show'])->name('userdashboard.show');
-Route::post('/userdashboard/{ticketId}/chat', [UserDashboardController::class, 'storeChat'])->name('userdashboard.storeChat');
-Route::post('/userdashboard/{ticketId}/status', [UserDashboardController::class, 'updateStatus'])->name('userdashboard.updateStatus');
-Route::post('/userdashboard/{ticketId}/priority', [UserDashboardController::class, 'updatePriority'])->name('userdashboard.updatePriority');
-
-// Routes voor Tickets
-Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
-Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create');
-Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store');
-Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
-Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
-Route::delete('/tickets/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');
-
-Route::get('/chats', [ChatController::class, 'index'])->name('chats.index');
-Route::get('/chats/create', [ChatController::class, 'create'])->name('chats.create');
-Route::post('/chats', [ChatController::class, 'store'])->name('chats.store');
-Route::get('/chats/{chat}', [ChatController::class, 'show'])->name('chats.show');
-Route::get('/chats/{chat}/edit', [ChatController::class, 'edit'])->name('chats.edit');
-Route::put('/chats/{chat}', [ChatController::class, 'update'])->name('chats.update');
-Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chats.destroy');
-
-
-
 // Routes voor Workers
-Route::middleware(['auth', 'admin:worker'])->group(function () {
+Route::middleware(['auth', 'admin:worker,admin'])->group(function () {
+
     Route::get('/workerdashboard/take/{ticketId}', [WorkerDasboardController::class, 'take'])->name('workerdashboard.take');
+
+    // Routes voor Tickets
+    Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
+    Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create');
+    Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store');
     
 });
 
 // Routes voor Users
-Route::middleware(['auth', 'admin:user'])->group(function () {
+Route::middleware(['auth', 'admin:user,worker,admin'])->group(function () {
 
+    Route::get('/userdashboard', [UserDashboardController::class, 'index'])->name('userdashboard.index');
+    Route::get('/userdashboard/create', [UserDashboardController::class, 'create'])->name('userdashboard.create');
+    Route::post('/userdashboard', [UserDashboardController::class, 'store'])->name('userdashboard.store');
+    Route::get('/userdashboard/{ticket}', [UserDashboardController::class, 'show'])->name('userdashboard.show');
+    Route::post('/userdashboard/{ticketId}/chat', [UserDashboardController::class, 'storeChat'])->name('userdashboard.storeChat');
+    Route::post('/userdashboard/{ticketId}/status', [UserDashboardController::class, 'updateStatus'])->name('userdashboard.updateStatus');
+    Route::post('/userdashboard/{ticketId}/priority', [UserDashboardController::class, 'updatePriority'])->name('userdashboard.updatePriority');
+
+    Route::get('/chats', [ChatController::class, 'index'])->name('chats.index');
+    Route::get('/chats/create', [ChatController::class, 'create'])->name('chats.create');
+    Route::post('/chats', [ChatController::class, 'store'])->name('chats.store');
 });
 
 // Routes voor Contact

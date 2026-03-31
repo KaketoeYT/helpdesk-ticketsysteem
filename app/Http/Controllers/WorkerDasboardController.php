@@ -14,7 +14,7 @@ class WorkerDasboardController extends Controller
 
         // Check of het ticket al een worker heeft
         if ($ticket->assignedWorker) {
-            return redirect()->back()->with('error', 'Dit ticket is al toegewezen aan een worker.');
+            return redirect()->back();
         }
 
         // Maak een nieuwe toewijzing aan
@@ -23,6 +23,6 @@ class WorkerDasboardController extends Controller
             'user_id' => auth()->id(),
         ]);
 
-        return redirect()->route('dashboard')->with('success', 'Ticket succesvol toegewezen aan jou.');
+        return redirect()->route('dashboard');
     }
 }
