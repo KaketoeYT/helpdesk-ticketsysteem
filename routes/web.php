@@ -125,6 +125,6 @@ Route::middleware(['auth', 'admin:user,worker,admin'])->group(function () {
 
 // Routes voor Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
-Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.sendd');
 
 require __DIR__ . '/auth.php';
