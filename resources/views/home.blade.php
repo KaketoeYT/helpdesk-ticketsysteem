@@ -4,21 +4,20 @@
         <div class="hero-card shadow-lg mb-5">
             <div class="row align-items-center">
                 <div class="col-lg-7">
-                    <h1 class="display-5 fw-bold text-white mb-3">Welkom bij de Service Desk</h1>
+                    <h1 class="display-5 fw-bold text-white mb-3">{{ __('messages.welcome') }}</h1>
                     <p class="lead text-secondary mb-4">
-                        Meld problemen, volg je tickets in real-time en communiceer direct met onze technici.
-                        Samen zorgen we voor een vlekkeloze workflow.
+                        {{ __('messages.welcome_desc') }}
                     </p>
                     <div class="d-flex gap-3">
                         @auth
                             @if (auth()->user()->role === 'admin')
                                 <a href="{{ route('userdashboard.create') }}" class="btn btn-primary-custom shadow-sm">
-                                    Nieuw Probleem Melden
+                                    {{ __('messages.new_ticket') }}
                                 </a>
                             @endif
 
                             <a href="{{ route('dashboard') }}" class="btn btn-primary-custom shadow-sm">
-                                Mijn Tickets Bekijken
+                                {{ __('messages.my_tickets') }}
                             </a>
                         @endauth
 
@@ -46,9 +45,8 @@
                                 d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
                         </svg>
                     </div>
-                    <h3 class="h5 fw-bold">Snelle Registratie</h3>
-                    <p class="text-secondary small mb-0">Maak binnen 30 seconden een ticket aan met alle nodige details
-                        en bijlagen.</p>
+                    <h3 class="h5 fw-bold">{{ __('messages.fast') }}</h3>
+                    <p class="text-secondary small mb-0">{{ __('messages.fast_desc') }}</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -60,9 +58,8 @@
                                 d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
                         </svg>
                     </div>
-                    <h3 class="h5 fw-bold">Live Updates</h3>
-                    <p class="text-secondary small mb-0">Ontvang direct meldingen wanneer de status van je probleem
-                        verandert of er een reactie is.</p>
+                    <h3 class="h5 fw-bold">{{ __('messages.live') }}</h3>
+                    <p class="text-secondary small mb-0">{{ __('messages.live_desc') }}</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -76,11 +73,11 @@
                                 d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
                         </svg>
                     </div>
-                    <h3 class="h5 fw-bold">Direct Chat</h3>
-                    <p class="text-secondary small mb-0">Chat direct met de toegewezen medewerker om onduidelijkheden
-                        snel op te lossen.</p>
+                    <h3 class="h5 fw-bold">{{ __('messages.direct') }}</h3>
+                    <p class="text-secondary small mb-0">{{ __('messages.direct_desc') }}</p>
                 </div>
             </div>
         </div>
     </div>
 </x-base-layout>
+
