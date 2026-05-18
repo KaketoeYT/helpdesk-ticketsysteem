@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
             PrioritySeeder::class,
             StatusSeeder::class,
             LocationSeeder::class,
+            CommissionSeeder::class,
         ]);
     }
 }

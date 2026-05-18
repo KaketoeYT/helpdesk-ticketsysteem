@@ -13,7 +13,7 @@
                     <th>ID</th>
                     <th>Naam</th>
                     <th>Land</th>
-                    <th>Stad</th>
+                    <th>Stad</th>b
                     <th>Straat</th>
                     <th>Nummer</th>
                     <th>Created At</th>
